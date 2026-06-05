@@ -1,0 +1,70 @@
+:root {
+  /* Brand & CTA */
+  --color-primary: #0066CC;
+  --color-on-primary: #FFFFFF;
+  --color-primary-mid: #5BA8E0;
+  --color-primary-light: #D6E9F8;
+  --color-primary-dark: #0D327D;
+  --color-on-primary-dark: #FFFFFF;
+  --color-accent: #DA3134;
+  --color-on-accent: #FFFFFF;
+
+  /* Hero / FV */
+  --color-hero-accent: #2C53BA;
+  --color-hero-brand: #6155F5;
+
+  /* Neutral */
+  --color-ink: #333333;
+  --color-ink-muted: #666666;
+  --color-canvas: #FFFFFF;
+  --color-surface-1: #F7F7F7;
+  --color-hairline: #E5E5E5;
+  --color-hairline-strong: #333333;
+
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --section-gap: 40px;
+  --column-gap: 20px;
+
+  /* Container */
+  --container-max: 1140px;
+
+  /* Font */
+  --font-family: 'Montserrat', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+@media (min-width: 960px) {
+  :root {
+    --section-gap: 60px;
+    --column-gap: 40px;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
