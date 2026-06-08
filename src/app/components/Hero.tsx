@@ -113,11 +113,10 @@ export default function Hero() {
 
           {/* MIYAGUCHI PAINT（英字 Montserrat / 宮口塗装に対し PC比 88/108 を踏襲し 39→78→78px）*/}
           <p
-            className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(39vw/375*100)] md:text-[calc(78vw/1440*100)] xl:text-[78px]"
+            className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(32vw/375*100)] md:text-[calc(78vw/1440*100)] xl:text-[78px]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            <span className="block">MIYAGUCHI</span>
-            <span className="block text-right">PAINT</span>
+            MIYAGUCHI PAINT
           </p>
         </div>
 
