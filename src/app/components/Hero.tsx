@@ -40,7 +40,7 @@ export default function Hero() {
       />
 
       {/* ===== 中央寄せラッパ（sjnkbs: relative mx-auto mb-8 max-w-[1280px] pt-10）===== */}
-      <div className="relative mx-auto mb-8 max-w-[480px] pt-10">
+      <div className="relative mx-auto mb-[calc(32vw/375*100)] max-w-[480px] pt-[calc(40vw/375*100)]">
         {/* ① キャッチコピー（3行・"創業40年" だけ青グラデ）*/}
         <p className="relative z-[2] m-0 font-semibold leading-[1.3] text-[var(--color-ink)] text-[calc(28vw/375*100)] md:text-[calc(56vw/1440*100)] xl:text-[56px]">
           <span className="block">
@@ -70,7 +70,7 @@ export default function Hero() {
 
         {/* ② メイン写真カード（静止画1枚 / 例外: width:80% + rotate:10deg / 後で Swiper 化可能なよう独立 div で包む）*/}
         <div
-          className="relative left-1/2 mt-[-20px] w-[80%] -translate-x-1/2"
+          className="relative left-1/2 -mt-[calc(20vw/375*100)] w-[80%] -translate-x-1/2"
           style={{ rotate: "10deg" }}
         >
           <div
@@ -89,7 +89,7 @@ export default function Hero() {
         </div>
 
         {/* ③ ブランド名ブロック（右寄せ / 写真に重ねる）*/}
-        <div className="relative z-[2] ml-auto -mt-5 w-fit">
+        <div className="relative z-[2] ml-auto -mt-[calc(20vw/375*100)] w-fit">
           {/* サブラベル + 下線 */}
           <div className="w-fit">
             <p className="m-0 font-bold leading-[1.77] text-[var(--color-hero-accent)] text-[calc(12vw/375*100)] md:text-[calc(18vw/1440*100)] xl:text-[18px]">
@@ -105,12 +105,11 @@ export default function Hero() {
 
           {/* MIYAGUCHI PAINT（英字 Montserrat / 宮口塗装に対し PC比 88/108 を踏襲し 39→78→78px）*/}
           <p
-            className="m-0 text-right font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(39vw/375*100)] md:text-[calc(78vw/1440*100)] xl:text-[78px]"
+            className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(39vw/375*100)] md:text-[calc(78vw/1440*100)] xl:text-[78px]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            MIYAGUCHI
-            <br />
-            PAINT
+            <span className="block">MIYAGUCHI</span>
+            <span className="block text-right">PAINT</span>
           </p>
         </div>
 
