@@ -98,10 +98,18 @@ export default function Hero() {
             <div className="mt-1 h-px w-full bg-[var(--color-hero-accent)]" />
           </div>
 
-          {/* 宮口塗装（H1相当の巨大文字 / sjnkbs ブランド大文字 48→96→96px）*/}
-          <h1 className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(48vw/375*100)] md:text-[calc(96vw/1440*100)] xl:text-[96px]">
-            宮口塗装
-          </h1>
+          {/* 宮口塗装（H1相当の巨大文字 / sjnkbs ブランド大文字 48→96→96px）+ dot-blue を左に組込 */}
+          <div className="flex items-center gap-[calc(8vw/375*100)]">
+            <img
+              src="/img/dot-blue.svg"
+              alt=""
+              aria-hidden="true"
+              className="flex-shrink-0 w-[calc(16vw/375*100)]"
+            />
+            <h1 className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(48vw/375*100)] md:text-[calc(96vw/1440*100)] xl:text-[96px]">
+              宮口塗装
+            </h1>
+          </div>
 
           {/* MIYAGUCHI PAINT（英字 Montserrat / 宮口塗装に対し PC比 88/108 を踏襲し 39→78→78px）*/}
           <p
@@ -150,13 +158,6 @@ export default function Hero() {
           className="absolute z-[2] -left-[calc(16vw/375*100)] top-[calc(491vw/375*100)] w-[calc(78vw/375*100)]"
         >
           <img src="/img/paint-blue.png" alt="" aria-hidden="true" className="w-full max-w-none" />
-        </div>
-
-        {/* #3 dot-blue ← sjnkbs 赤ドット。left:70px / top:578px / w:16px */}
-        <div
-          className="absolute z-[2] left-[calc(70vw/375*100)] top-[calc(578vw/375*100)] w-[calc(16vw/375*100)]"
-        >
-          <img src="/img/dot-blue.svg" alt="" aria-hidden="true" className="w-full max-w-none" />
         </div>
       </div>
     </section>
