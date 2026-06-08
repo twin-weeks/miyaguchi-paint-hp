@@ -40,7 +40,7 @@ export default function Hero() {
       />
 
       {/* ===== 中央寄せラッパ（sjnkbs: relative mx-auto mb-8 max-w-[1280px] pt-10）===== */}
-      <div className="relative mx-auto mb-8 max-w-[1280px] pt-10">
+      <div className="relative mx-auto mb-8 max-w-[480px] pt-10">
         {/* ① キャッチコピー（3行・"創業40年" だけ青グラデ）*/}
         <p className="relative z-[2] m-0 font-semibold leading-[1.3] text-[var(--color-ink)] text-[calc(28vw/375*100)] md:text-[calc(56vw/1440*100)] xl:text-[56px]">
           <span className="block">
