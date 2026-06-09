@@ -28,15 +28,22 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute z-0 max-w-none"
-        style={{ width: 520, left: -160, bottom: -300 }}
+        style={{
+          width: `calc(1328vw/375*100)`,
+          left: `calc(400vw/375*100)`,
+          top: `calc(184vw/375*100)`,
+          transform: `rotate(74deg)`,
+          transformOrigin: "top left", // Figma の回転中心に合わせる
+        }}
       />
+
       {/* 青系グレー弧（右上）← sjnkbs 灰弧 hero-arc-02.svg。SP値は同上の理由で右上ブリードに調整（プレビューで微調整） */}
       <img
         src="/img/hero-arc-02.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute z-0 max-w-none"
-        style={{ width: 300, right: -90, top: -80 }}
+        style={{ width: 144, right: -24, top: -96 }}
       />
 
       {/* ===== 中央寄せラッパ（sjnkbs: relative mx-auto mb-8 max-w-[1280px] pt-10）===== */}
@@ -108,11 +115,13 @@ export default function Hero() {
             className="m-0 font-semibold leading-[1.1] text-[var(--color-hero-brand)] text-[calc(32vw/375*100)] md:text-[calc(78vw/1440*100)] xl:text-[78px]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            MIYAGUCHI PAINT
+            MIYAGUCHI
+            <br />
+            PAINT
           </p>
         </div>
 
-        {/* ④ Scroll インジケーター（SP左下 absolute / scroll-circle 素材なしのため枠線で代替）*/}
+        {/* ④ Scroll インジケーター（SP左下 absolute / circle-grey.svg 素材使用）*/}
         <div className="absolute bottom-0 left-0 z-[3] flex w-fit flex-col items-center">
           <span
             className="text-sm font-medium leading-[1.3] text-[var(--color-hero-accent)]"
@@ -123,39 +132,57 @@ export default function Hero() {
           {/* 縦線 + 丸 + 外周リング */}
           <div className="relative mt-1 flex flex-col items-center pb-1">
             <span className="h-[33px] w-px rounded-sm bg-[var(--color-hero-accent)]" />
-            <span className="relative mt-[-6px] flex size-[40px] items-center justify-center rounded-full border-[1.86px] border-[var(--color-surface-1)]">
-              <span className="size-[10px] rounded-full bg-[var(--color-hero-accent)]" />
-            </span>
+            <div className="relative mt-[-6px] size-[40px]">
+              <img
+                src="/img/circle-grey.svg"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 size-[40px]"
+              />
+              <span className="absolute left-1/2 top-1/2 size-[10px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-hero-accent)]" />
+            </div>
           </div>
         </div>
 
         {/* ⑥ 装飾：浮遊アイコン ×4（後で motion ラップ可能なよう独立 div / SP座標 §7 SP@375）*/}
         {/* #0 青ハケ ← sjnkbs 赤鉛筆。left:0 / top:216px / w:70px */}
-        <div
-          className="absolute left-0 z-[2] top-[calc(216vw/375*100)] w-[calc(70vw/375*100)]"
-        >
-          <img src="/img/brush.png" alt="" aria-hidden="true" className="w-full max-w-none" />
+        <div className="absolute left-0 z-[2] top-[calc(216vw/375*100)] w-[calc(70vw/375*100)]">
+          <img
+            src="/img/brush.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full max-w-none"
+          />
         </div>
 
         {/* #1 屋根アイコン ← sjnkbs ピンクノートPC。right:-36px / top:350px / w:102px */}
-        <div
-          className="absolute z-[2] -right-[calc(36vw/375*100)] top-[calc(350vw/375*100)] w-[calc(102vw/375*100)]"
-        >
-          <img src="/img/Roof_Icon.png" alt="" aria-hidden="true" className="w-full max-w-none" />
+        <div className="absolute z-[2] -right-[calc(16vw/375*100)] top-[calc(400vw/375*100)] w-[calc(120vw/375*100)]">
+          <img
+            src="/img/Roof_Icon.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full max-w-none"
+          />
         </div>
 
         {/* #2 paint-blue ← sjnkbs 書類アイコン。left:-16px / top:491px / w:78px */}
-        <div
-          className="absolute z-[2] -left-[calc(16vw/375*100)] top-[calc(491vw/375*100)] w-[calc(78vw/375*100)]"
-        >
-          <img src="/img/paint-blue.png" alt="" aria-hidden="true" className="w-full max-w-none" />
+        <div className="absolute z-[2] -left-[calc(16vw/375*100)] top-[calc(491vw/375*100)] w-[calc(78vw/375*100)]">
+          <img
+            src="/img/paint-blue.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full max-w-none"
+          />
         </div>
 
         {/* #3 dot-blue ← sjnkbs 赤ドット。left:70px / top:578px / w:16px */}
-        <div
-          className="absolute z-[2] left-[calc(70vw/375*100)] top-[calc(578vw/375*100)] w-[calc(16vw/375*100)]"
-        >
-          <img src="/img/dot-blue.svg" alt="" aria-hidden="true" className="w-full max-w-none" />
+        <div className="absolute z-[2] left-[calc(96vw/375*100)] top-[calc(540vw/375*100)] w-[calc(16vw/375*100)]">
+          <img
+            src="/img/dot-blue.svg"
+            alt=""
+            aria-hidden="true"
+            className="w-full max-w-none"
+          />
         </div>
       </div>
     </section>
