@@ -72,7 +72,7 @@ export default function Hero() {
           alt=""
           aria-hidden="true"
           className="relative z-[2] mt-1 max-w-none"
-          style={{ width: "55%" }}
+          style={{ width: `calc(180vw/375*100)` }} /* TD-5: 55% → calc 一貫化（@375で約180px） */
         />
 
         {/* ② メイン写真カード（静止画1枚 / 例外: width:80% + rotate:10deg / 後で Swiper 化可能なよう独立 div で包む）*/}
@@ -84,7 +84,8 @@ export default function Hero() {
             className="overflow-hidden rounded-[8px]"
             style={{
               aspectRatio: "0.75",
-              boxShadow: "4px 4px 32px 0 rgba(187, 165, 165, 0.3)",
+              /* TD-7: 影の px → calc 一貫化 */
+              boxShadow: `calc(4vw/375*100) calc(4vw/375*100) calc(32vw/375*100) 0 rgba(187, 165, 165, 0.3)`,
             }}
           >
             <img
@@ -102,7 +103,7 @@ export default function Hero() {
             <p className="m-0 font-bold leading-[1.77] text-[var(--color-hero-accent)] text-[calc(12vw/375*100)] md:text-[calc(18vw/1440*100)] xl:text-[18px]">
               吉祥寺・三鷹・田無の塗装専門店
             </p>
-            <div className="mt-1 h-px w-full bg-[var(--color-hero-accent)]" />
+            <div className="mt-[calc(4vw/375*100)] h-px w-full bg-[var(--color-hero-accent)]" />
           </div>
 
           {/* 宮口塗装（H1相当の巨大文字 / sjnkbs ブランド大文字 48→96→96px）*/}
@@ -124,22 +125,22 @@ export default function Hero() {
         {/* ④ Scroll インジケーター（SP左下 absolute / circle-grey.svg 素材使用）*/}
         <div className="absolute bottom-0 left-0 z-[3] flex w-fit flex-col items-center">
           <span
-            className="text-sm font-medium leading-[1.3] text-[var(--color-hero-accent)]"
+            className="font-medium leading-[1.3] text-[var(--color-hero-accent)] text-[calc(14vw/375*100)]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             Scroll
           </span>
-          {/* 縦線 + 丸 + 外周リング */}
-          <div className="relative mt-1 flex flex-col items-center pb-1">
-            <span className="h-[33px] w-px rounded-sm bg-[var(--color-hero-accent)]" />
-            <div className="relative mt-[-6px] size-[40px]">
+          {/* 縦線 + 丸 + 外周リング（TD-6: 装飾UIの固定px → calc 一貫化）*/}
+          <div className="relative mt-[calc(4vw/375*100)] flex flex-col items-center pb-[calc(4vw/375*100)]">
+            <span className="h-[calc(33vw/375*100)] w-px rounded-sm bg-[var(--color-hero-accent)]" />
+            <div className="relative -mt-[calc(6vw/375*100)] size-[calc(40vw/375*100)]">
               <img
                 src="/img/circle-grey.svg"
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 size-[40px]"
+                className="absolute inset-0 size-[calc(40vw/375*100)]"
               />
-              <span className="absolute left-1/2 top-1/2 size-[10px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-hero-accent)]" />
+              <span className="absolute left-1/2 top-1/2 size-[calc(10vw/375*100)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-hero-accent)]" />
             </div>
           </div>
         </div>
