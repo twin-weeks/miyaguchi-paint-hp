@@ -1,12 +1,7 @@
-<svg width="704" height="784" viewBox="0 0 704 784" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_167_1841" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="-80" width="864" height="864">
-<path d="M0 -80H864V-80V784V784H0V784V-80V-80V-80" fill="white"/>
-</mask>
-<g mask="url(#mask0_167_1841)">
-<path d="M438.812 -65.5137C669.689 -61.7467 853.781 128.246 850.019 358.82C846.257 589.395 656.065 773.281 425.188 769.514C194.311 765.747 10.219 575.754 13.981 345.18C17.743 114.605 207.935 -69.2806 438.812 -65.5137V-65.5137" stroke="url(#paint0_linear_167_1841)" stroke-width="16.177"/>
-</g>
+<svg width="125" height="420" viewBox="0 0 125 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M101.488 10.1288C202.613 -58.8368 340.422 -32.859 409.297 68.1328C478.172 169.125 452.045 306.906 350.921 375.871C249.796 444.837 111.987 418.859 43.1119 317.867C-25.7635 216.875 0.364037 79.0945 101.488 10.1288Z" stroke="url(#paint0_linear_835_1259)" stroke-width="9.29978"/>
 <defs>
-<linearGradient id="paint0_linear_167_1841" x1="2.8608" y1="344.998" x2="870.791" y2="359.159" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_835_1259" x1="38.2412" y1="321.189" x2="418.395" y2="61.9281" gradientUnits="userSpaceOnUse">
 <stop stop-color="#F3F3F3"/>
 <stop offset="0.5" stop-color="#D2D2D2"/>
 <stop offset="1" stop-color="#B1B1B1"/>
