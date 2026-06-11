@@ -112,7 +112,15 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
 
 export default function Reasons() {
   return (
-    <section id="reasons" style={{ padding: 'var(--section-gap) 0', backgroundColor: 'var(--color-surface-1)' }}>
+    // 食い込みセクション：Greeting の帯下端からはみ出した装飾（木・ローラー・
+    // ピンクビル＝SP≈118px / md≈205px）を、灰背景の上に受ける。
+    // z-0 で Greeting(z-10) の装飾を上に通す。上パディング = 装飾クリア分 +
+    // section-gap。▼ 重なり量の唯一の調整ツマミ＝pt の「+120px / +210px」部分。
+    <section
+      id="reasons"
+      className="relative z-0 pt-[calc(var(--section-gap)+120px)] pb-[var(--section-gap)] md:pt-[calc(var(--section-gap)+210px)]"
+      style={{ backgroundColor: 'var(--color-surface-1)' }}
+    >
       <div className="mx-auto" style={{ maxWidth: 'var(--container-max)', padding: '0 var(--space-md)' }}>
         {/* Section header */}
         <div className="text-center mb-12">

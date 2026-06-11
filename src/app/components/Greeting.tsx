@@ -27,9 +27,13 @@
    ───────────────────────────────────────────────────────── */
 export default function Greeting() {
   return (
-    <section id="greeting" className="relative bg-[var(--color-canvas)]">
-      {/* はみ出しクリップ＋左右24px。下方向の装飾はみ出しは pb で受ける */}
-      <div className="overflow-x-clip px-6 pt-16 pb-32 md:pt-24 md:pb-52">
+    // 背景は透明（body=canvas=白が透ける）。z-10 で、帯からはみ出した装飾を
+    // 次セクション(Reasons)の灰背景の上に描画させる（=食い込み／sjnkbs方式）。
+    <section id="greeting" className="relative z-10">
+      {/* はみ出しクリップ＋左右24px。pb-0で「装飾帯の下端」でセクションを終わらせ、
+          帯から下にはみ出した装飾(#3〜#6)を Reasons 領域へ食い込ませる。
+          ▼ 食い込み量の調整は Reasons 側の上パディング（pt）が唯一のツマミ。*/}
+      <div className="overflow-x-clip px-6 pt-16 pb-0 md:pt-24 md:pb-0">
         <div className="relative mx-auto max-w-[1224px]">
           {/* ───── ① テキストブロック（z-10）───── */}
           <div className="relative z-10">
