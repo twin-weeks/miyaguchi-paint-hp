@@ -33,7 +33,7 @@ export default function Greeting() {
       {/* はみ出しクリップ＋左右24px。pb-0で「装飾帯の下端」でセクションを終わらせ、
           帯から下にはみ出した装飾(#3〜#6)を Reasons 領域へ食い込ませる。
           ▼ 食い込み量の調整は Reasons 側の上パディング（pt）が唯一のツマミ。*/}
-      <div className="overflow-x-clip px-6 pt-16 pb-0 md:pt-24 md:pb-0">
+      <div className="overflow-x-clip px-6 pt-0 pb-0 md:pt-24 md:pb-0">
         <div className="relative mx-auto max-w-[1224px]">
           {/* ───── ① テキストブロック（z-10）───── */}
           <div className="relative z-10">
