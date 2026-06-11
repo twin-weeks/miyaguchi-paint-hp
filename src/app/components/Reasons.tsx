@@ -181,16 +181,6 @@ export default function Reasons() {
           >
             Why Choose Us
           </p>
-          <p
-            className="mb-3 lg:text-xl"
-            style={{
-              fontSize: 16,
-              fontWeight: 400,
-              color: "var(--color-ink-muted)",
-            }}
-          >
-            三鷹・吉祥寺・田無の皆様に
-          </p>
           <h2
             style={{
               fontSize: 24,
