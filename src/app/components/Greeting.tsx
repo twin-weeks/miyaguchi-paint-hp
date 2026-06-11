@@ -1,155 +1,129 @@
+/* ─────────────────────────────────────────────────────────
+   Greeting（Message / ごあいさつ）— SP起点 / モバイルファースト
+   構造・数値・装飾配置は sjnkbs 採用サイト Message セクションを踏襲し、
+   色・コピー・装飾素材のみ宮口塗装に置換（02_spec/Greeting_SP_完全リスト.md）。
+
+   ★ Hero(FV) との違い（完全リスト §7-1）:
+   - テキストは vw リキッドにしない。宮口の clamp() 方式を維持（段階的に頭打ち）。
+   - 装飾だけ「SP=375vw ＋ bottom-* 底揃え ＋ overflow-x-clip はみ出し」、
+     位置オフセット・電卓/deco 幅は固定px（完全リスト §2/§5 の値をそのまま流用）。
+
+   井上さん確定（2026-06-10）:
+   - SP でも背景装飾を全部出す（sjnkbs 準拠）
+   - 見出し1「外壁塗装のプロとして」の SP を 18〜20 に縮小（sjnkbs 寄せ）
+   - 本文は常に改行（sjnkbs 準拠）
+   - 装飾対応: 赤ビル→青ビル / ピンクビル / 木大・木小 / 電卓+楕円→ローラー+楕円 /
+     灰ドット→dot-gray / message-deco→宮口色替え版。CTAカード2枚は実装しない。
+
+   ※ clamp の床ゾーン対策: whitespace-nowrap を使わず、最小幅(〜320px)でも
+     1行が溢れない/折り返す設計（サブタイトルの床を 14px に）。
+   ※ PC版（CTAカード・lg:2カラム）は GreetingPc.tsx に保持。App.tsx は本ファイルを使用。
+   ───────────────────────────────────────────────────────── */
 export default function Greeting() {
   return (
-    <section
-      id="greeting"
-      className="relative overflow-x-clip bg-[var(--color-canvas)]"
-    >
-      {/* ── Background decoration layer (1440px container と同期。絶対座標の起点を本文コンテナと揃える) ── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden lg:block"
-      >
-        <div className="relative mx-auto h-full" style={{ maxWidth: 1440 }}>
-          {/* Blue buildings (right side, large) */}
+    <section id="greeting" className="relative bg-[var(--color-canvas)]">
+      {/* はみ出しクリップ＋左右24px（弧/ビル群を画面外へ逃がす器）*/}
+      <div className="overflow-x-clip px-6 pt-16 md:pt-24">
+        {/* セクション本体（SP=1カラム）。装飾はこの relative 直下に absolute でばら撒く */}
+        <div className="relative mx-auto max-w-[1224px] pb-[calc(62vw/375*100)] md:pb-[120px]">
+          {/* ───── ① テキストブロック（z-10）───── */}
+          <div className="relative z-10">
+            {/* "Message" ラベル */}
+            <p
+              className="m-0 text-sm font-medium leading-[1.4] text-[var(--color-hero-accent)] md:text-xl"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
+            >
+              Message
+            </p>
+
+            {/* サブタイトル＋下線（nowrap なし・床14pxで320pxでも収まる）*/}
+            <p className="mt-2 inline-block border-b-2 border-[var(--color-hero-accent)] pb-2 text-[clamp(14px,3.5vw,20px)] font-semibold leading-[1.4] text-[var(--color-hero-accent)]">
+              三鷹・吉祥寺・田無で塗装ひと筋
+            </p>
+
+            {/* 見出し（小→大の2段。sjnkbs 構造に合わせ1つの <p> に2 span）*/}
+            <p className="m-0 mt-6 font-semibold text-[var(--color-ink)] md:mt-8">
+              {/* 見出し2：SP 32 → md 48（宮口現状維持＝sjnkbs 大と一致）*/}
+              <span className="mt-2 block text-[clamp(32px,7vw,48px)] leading-[1.4]">
+                地域に愛されて
+                <br />
+                40年の塗装屋です
+              </span>
+            </p>
+
+            {/* 本文（常に改行＝sjnkbs 準拠。折返しテキストなので狭幅でも溢れない）*/}
+            <p className="m-0 mt-4 text-[clamp(15px,2.2vw,18px)] font-medium leading-[2.4] text-[var(--color-ink)] md:mt-6">
+              地域の皆様に選ばれ続けてきた理由。それは「10年後も変わらない美しさと耐久性」です。
+              建物の状態や地域の環境を見極め、一塗り一塗りに魂を込める。
+              私たちが培ってきた職人の技で、あなたの大切な住まいを守り抜きます。
+            </p>
+
+            {/* 装飾A：message-deco（左カラム基準の absolute・固定px）*/}
+            {/* 宮口は _sp のみ保有のため img 1枚（PC版 _pc は後日）*/}
+            <img
+              src="/img/message-deco_sp.svg"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute right-[calc(26vw/375*100)] top-[24px] w-[67px] md:-right-24 md:w-[117px] lg:right-8"
+            />
+          </div>
+
+          {/* ───── ② 装飾レイヤー（section直下にフラットに absolute・底揃えはみ出し）───── */}
+          {/* #1 灰ドット（z-[2]：本文より前面）*/}
+          <img
+            src="/img/dot-gray.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute right-8 top-[450px] z-[2] w-3 md:right-[calc(240vw/1440*100)] md:top-[110px]"
+          />
+
+          {/* #2 青ビル群（大・右下スカイライン）← sjnkbs 赤ビル */}
           <img
             src="/img/ビルのイラスト.png"
             alt=""
-            className="absolute max-w-none"
-            style={{ width: 1075, height: 581, right: -16, top: 184 }}
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 right-[-90px] w-[calc(335vw/375*100)] max-w-[806px] md:w-[calc(1075vw/1024*100)] xl:right-[-188px] xl:max-w-[1075px]"
           />
-          {/* Pink buildings (left-center, behind text) */}
+
+          {/* #3 ピンクビル群（左下スカイライン）*/}
           <img
             src="/img/message-bg-building-pink.png"
             alt=""
-            className="absolute -bottom-36 max-w-none"
-            style={{ width: 662, height: 372, left: -80, bottom: -104 }}
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[-34px] left-[-104px] w-[calc(206vw/375*100)] max-w-[564px] md:bottom-[-106px] md:w-[calc(752vw/1024*100)] xl:left-[-242px] xl:max-w-[662px]"
           />
 
-          {/* Trees (right-bottom) */}
+          {/* #4 木・大 */}
           <img
             src="/img/木のイラスト.png"
             alt=""
-            className="absolute bottom-0 max-w-none"
-            style={{ width: 132, height: 131, right: 250 }}
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[-42px] right-[calc(6vw/375*100)] w-[calc(64vw/375*100)] max-w-[132px] md:bottom-[-62px] md:right-[calc(48vw/1440*100)] md:w-[calc(132vw/1440*100)]"
           />
+
+          {/* #5 木・小 */}
           <img
             src="/img/message-tree-small.png"
             alt=""
-            className="absolute bottom-0 max-w-none"
-            style={{ width: 100, height: 100, right: 385 }}
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[-55px] right-[calc(76vw/375*100)] w-[calc(40vw/375*100)] max-w-[100px] md:bottom-[-76px] md:right-[calc(215vw/1440*100)] md:w-[calc(100vw/1440*100)]"
           />
 
-          {/* Roller (left-bottom) */}
-          <div
-            className="absolute -bottom-88 -left-24"
-            style={{ width: 359, height: 294 }}
-          >
+          {/* #6 電卓＋楕円 → ローラー＋楕円（楕円台座の中央にローラーを重ねる・固定px）*/}
+          <div className="pointer-events-none absolute bottom-[-118px] -left-20 w-[171px] md:bottom-[-205px] md:-left-40 md:w-[359px]">
             <img
               src="/img/roller-ellipse-bg.svg"
               alt=""
-              className="absolute inset-0 h-full w-full"
+              aria-hidden="true"
+              className="w-full"
             />
             <img
               src="/img/roller.png"
               alt=""
-              className="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2"
-              style={{ width: 180, height: 180 }}
+              aria-hidden="true"
+              className="absolute left-1/2 top-1/2 w-[52%] max-w-none -translate-x-1/2 -translate-y-1/2"
             />
           </div>
-        </div>
-      </div>
-
-      {/* ── Content container (CSS Grid：マクロ骨格は2カラム) ── */}
-      <div
-        className="
-          relative mx-auto
-          grid grid-cols-1 items-start gap-12
-          px-6 py-16
-          md:px-10 md:py-24
-          lg:py-[120px] lg:pb-[100px] lg:px-8 lg:pt-[0px]
-        "
-        style={{ maxWidth: 1440 }}
-      >
-        {/* Decorative dots (PC only, container relative) */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 hidden lg:block"
-        >
-          <div
-            className="absolute rounded-[2px]"
-            style={{
-              width: 13,
-              height: 13,
-              right: 600,
-              top: 120,
-              background: "linear-gradient(180deg, #7C9AED 0%, #2D51BA 100%)",
-            }}
-          />
-          <div
-            className="absolute rounded-[2px] border-4"
-            style={{
-              width: 26,
-              height: 26,
-              right: 660,
-              top: 217,
-              borderColor: "var(--color-surface-1)",
-            }}
-          />
-          <div
-            className="absolute rounded-[2px]"
-            style={{
-              width: 16,
-              height: 16,
-              right: 645,
-              top: 341,
-              background: "linear-gradient(180deg, #7C9AED 0%, #2D51BA 100%)",
-            }}
-          />
-        </div>
-
-        {/* ── Left: Text content ── */}
-        <div className="relative z-10 flex flex-col gap-2">
-          {/* "Message" label */}
-          <p
-            className="m-0 font-medium leading-7 text-[var(--color-hero-accent)]"
-            style={{ fontFamily: "Montserrat, sans-serif", fontSize: 20 }}
-          >
-            Message
-          </p>
-
-          {/* Subtitle with underline */}
-          <div
-            className="inline-flex self-start border-b-2 pb-2"
-            style={{ borderColor: "var(--color-hero-accent)" }}
-          >
-            <p className="m-0 whitespace-nowrap text-[clamp(16px,3.5vw,20px)] font-normal leading-7 text-[var(--color-hero-accent)]">
-              お客様とのご縁を一番に大切にしています
-            </p>
-          </div>
-
-          {/* Heading line 1 */}
-          <p
-            className="m-0 text-[clamp(24px,5vw,32px)] font-semibold leading-[1.4] text-[var(--color-ink)]"
-            style={{ textWrap: "balance" }}
-          >
-            外壁塗装のプロとして
-          </p>
-
-          {/* Heading line 2 */}
-          <p className="m-0 whitespace-nowrap text-[clamp(32px,7vw,48px)] font-semibold leading-[1.4] text-[var(--color-ink)]">
-            実直に塗り続けます
-          </p>
-
-          {/* Body text */}
-          <p className="m-0 mt-2 text-[clamp(15px,2.2vw,18px)] font-medium leading-[2.4] text-[var(--color-ink)]">
-            三鷹・吉祥寺・田無で、外壁と屋根の塗装ひと筋に40年。
-            <br className="hidden md:inline" />
-            チラシも飛び込み営業もせず、
-            <br className="hidden md:inline" />
-            塗らせていただいたお家の方が次のお客様を紹介してくださる。
-            <br className="hidden md:inline" />
-            それだけで続いてきた塗装屋です。
-          </p>
         </div>
       </div>
     </section>

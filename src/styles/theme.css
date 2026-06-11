@@ -8,6 +8,11 @@
   --color-on-primary-dark: #FFFFFF;
   --color-accent: #DA3134;
   --color-on-accent: #FFFFFF;
+  /* フッター固定CTA（電話=オレンジ / WEB=ブルー）。dark は押し込みエフェクトの下辺色 */
+  --color-cta-orange: #E65C00;
+  --color-cta-orange-dark: #B34700;
+  --color-cta-blue: #205EA5;
+  --color-cta-blue-dark: #164275;
 
   /* Hero / FV */
   --color-hero-accent: #2C53BA;

@@ -1,8 +1,13 @@
 import { useState } from "react";
 
 /* ─────────────────────────────────────────────────────────
-   Header — sjnkbs 参考サイトの「作り」を踏襲
-   ・<header sticky>：ロゴ（左）＋ PC横ナビ（md+, SPは hidden）
+   Header — 中央ロゴ型のブランディング帯（Figma実測を翻訳）
+   ・<header sticky>：屋根アイコン + 「宮口塗装」(グレーグラデ文字
+       linear-gradient(268deg,#858585,#484848) を background-clip:text)
+       + サブタイトル。SPは中央寄せ / md+ は左寄せ + PC横ナビ。
+     下辺は紺の1px線（var(--color-hero-accent)）。
+     ※Figmaは Inter / rgba(0,0,0,0)（透明）/ 固定px だったが、
+       漢字=Noto Sans JP・単色 ink・clamp() に翻訳して採用。
    ・ハンバーガー：ヘッダーとは別の body直下 浮遊丸ボタン
        fixed right-4 top-20 size-[56px] rounded-full md:hidden
        背景 #2C2EBA / 3本線はシルバーグラデ #F3F3F3→#B1B1B1（Figma実測）
@@ -26,15 +31,49 @@ export default function Header() {
     <>
       {/* ===== ヘッダー本体（sticky・ロゴ + PC横ナビ）===== */}
       <header
-        className="sticky left-0 top-0 z-[100] w-full border-b border-[var(--color-hairline)] bg-[var(--color-canvas)]"
-        style={{ height: 56 }}
+        className="sticky left-0 top-0 z-[100] w-full bg-[var(--color-canvas)]"
+        style={{ borderBottom: "1px solid var(--color-hero-accent)" }}
       >
         <div
-          className="mx-auto flex h-full items-center justify-between"
-          style={{ maxWidth: "var(--container-max)", padding: "0 var(--space-md)" }}
+          className="mx-auto flex flex-col items-center gap-1 md:flex-row md:justify-between md:gap-0"
+          style={{
+            maxWidth: "var(--container-max)",
+            padding: "var(--space-sm) var(--space-md)",
+          }}
         >
-          <a href="#" className="flex items-center" onClick={() => setOpen(false)}>
-            <img src="/img/logo.png" alt="宮口塗装" className="h-10" />
+          {/* ロゴ：屋根アイコン + 「宮口塗装」(グレーグラデ文字) + サブタイトル */}
+          <a
+            href="#"
+            onClick={() => setOpen(false)}
+            className="flex flex-col items-center md:items-start"
+          >
+            <span className="flex items-center gap-0">
+              <img
+                src="/img/Roof_Icon.png"
+                alt=""
+                aria-hidden="true"
+                className="h-5 w-auto shrink-0"
+              />
+              <span
+                className="text-[clamp(16px,4.8vw,18px)] font-semibold leading-none"
+                style={{
+                  fontFamily: "'Noto Sans JP', sans-serif",
+                  backgroundImage:
+                    "linear-gradient(268deg, #858585 24.4%, #484848 74.57%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                宮口塗装
+              </span>
+            </span>
+            <span
+              className="mt-1 text-[clamp(11px,3.2vw,12px)] font-semibold leading-[1.25]"
+              style={{ color: "var(--color-ink)", letterSpacing: "-0.02em" }}
+            >
+              吉祥寺・三鷹・田無の塗装専門店
+            </span>
           </a>
 
           {/* PC専用：横並びグローバルナビ（SPは全画面ナビへ格納）*/}
@@ -66,7 +105,9 @@ export default function Header() {
         className={`fixed inset-0 z-[100] flex flex-col items-center justify-center gap-2 transition-opacity duration-200 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
-        style={{ backgroundColor: "#EEF2FB" }} /* ← 全画面ナビ背景は仮の淡青。参考は #FFEFEF（淡赤）*/
+        style={{
+          backgroundColor: "#EEF2FB",
+        }} /* ← 全画面ナビ背景は仮の淡青。参考は #FFEFEF（淡赤）*/
       >
         {NAV_LINKS.map((link) => (
           <a
