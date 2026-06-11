@@ -9,13 +9,22 @@ interface ReasonCardProps {
   stats?: { label: string; value: string }[];
 }
 
-function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stats }: ReasonCardProps) {
+function ReasonCard({
+  number,
+  tag,
+  h3Line1,
+  h3Line2,
+  body,
+  image,
+  imageAlt,
+  stats,
+}: ReasonCardProps) {
   return (
     <div
       className="rounded-lg overflow-hidden"
       style={{
-        backgroundColor: 'var(--color-canvas)',
-        boxShadow: '0 2px 16px rgba(0, 0, 0, 0.08)',
+        backgroundColor: "var(--color-canvas)",
+        boxShadow: "0 2px 16px rgba(0, 0, 0, 0.08)",
       }}
     >
       {/* Top area: label + text + image (desktop: single row, mobile: label+text row then image below) */}
@@ -26,17 +35,17 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
           <div
             className="shrink-0 flex items-start justify-center pt-6 pl-3 pr-3 lg:pt-8 lg:pl-4 lg:pr-4"
             style={{
-              borderRight: '1px dashed var(--color-hairline)',
+              borderRight: "1px dashed var(--color-hairline)",
             }}
           >
             <span
               style={{
-                fontFamily: 'Montserrat, sans-serif',
+                fontFamily: "Montserrat, sans-serif",
                 fontSize: 13,
                 fontWeight: 600,
-                color: 'var(--color-primary)',
-                writingMode: 'vertical-rl',
-                letterSpacing: '0.05em',
+                color: "var(--color-primary)",
+                writingMode: "vertical-rl",
+                letterSpacing: "0.05em",
               }}
             >
               {number}
@@ -48,15 +57,20 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
             <span
               className="inline-block pb-1 mb-4 text-sm font-semibold"
               style={{
-                color: 'var(--color-ink)',
-                borderBottom: '2px solid var(--color-ink)',
+                color: "var(--color-ink)",
+                borderBottom: "2px solid var(--color-ink)",
               }}
             >
               {tag}
             </span>
             <h3
               className="mb-4"
-              style={{ fontSize: 18, fontWeight: 600, lineHeight: 1.4, color: 'var(--color-ink)' }}
+              style={{
+                fontSize: 18,
+                fontWeight: 600,
+                lineHeight: 1.4,
+                color: "var(--color-ink)",
+              }}
             >
               <span className="lg:text-2xl">{h3Line1}</span>
               <br />
@@ -64,7 +78,12 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
             </h3>
             <p
               className="mb-6"
-              style={{ fontSize: 14, fontWeight: 400, lineHeight: 1.8, color: 'var(--color-ink-muted)' }}
+              style={{
+                fontSize: 14,
+                fontWeight: 400,
+                lineHeight: 1.8,
+                color: "var(--color-ink-muted)",
+              }}
             >
               {body}
             </p>
@@ -74,16 +93,16 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
                   <div key={stat.label}>
                     <p
                       className="text-xs mb-1 font-semibold"
-                      style={{ color: 'var(--color-primary)' }}
+                      style={{ color: "var(--color-primary)" }}
                     >
                       {stat.label}
                     </p>
                     <p
                       className="text-xl lg:text-3xl"
                       style={{
-                        fontFamily: 'Montserrat, sans-serif',
+                        fontFamily: "Montserrat, sans-serif",
                         fontWeight: 600,
-                        color: 'var(--color-primary)',
+                        color: "var(--color-primary)",
                         lineHeight: 1.2,
                       }}
                     >
@@ -102,7 +121,7 @@ function ReasonCard({ number, tag, h3Line1, h3Line2, body, image, imageAlt, stat
             src={image}
             alt={imageAlt}
             className="w-full h-full object-cover"
-            style={{ aspectRatio: '16/9', minHeight: 200 }}
+            style={{ aspectRatio: "16/9", minHeight: 200 }}
           />
         </div>
       </div>
@@ -119,9 +138,15 @@ export default function Reasons() {
     <section
       id="reasons"
       className="relative z-0 pt-[calc(var(--section-gap)+120px)] pb-[var(--section-gap)] md:pt-[calc(var(--section-gap)+210px)]"
-      style={{ backgroundColor: 'var(--color-surface-1)' }}
+      style={{ backgroundColor: "var(--color-surface-1)" }}
     >
-      <div className="mx-auto" style={{ maxWidth: 'var(--container-max)', padding: '0 var(--space-md)' }}>
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: "var(--container-max)",
+          padding: "0 var(--space-md)",
+        }}
+      >
         {/* Section header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-1">
@@ -130,11 +155,15 @@ export default function Reasons() {
               style={{
                 width: 8,
                 height: 8,
-                backgroundColor: 'var(--color-primary)',
+                backgroundColor: "var(--color-primary)",
               }}
             />
             <p
-              style={{ fontSize: 16, fontWeight: 600, color: 'var(--color-primary)' }}
+              style={{
+                fontSize: 16,
+                fontWeight: 600,
+                color: "var(--color-primary)",
+              }}
             >
               選ばれる理由
             </p>
@@ -143,31 +172,35 @@ export default function Reasons() {
             aria-hidden="true"
             className="mb-3"
             style={{
-              fontFamily: 'Montserrat, sans-serif',
+              fontFamily: "Montserrat, sans-serif",
               fontSize: 13,
               fontWeight: 500,
-              color: 'var(--color-ink-muted)',
-              letterSpacing: '0.05em',
+              color: "var(--color-ink-muted)",
+              letterSpacing: "0.05em",
             }}
           >
             Why Choose Us
           </p>
           <p
             className="mb-3 lg:text-xl"
-            style={{ fontSize: 16, fontWeight: 400, color: 'var(--color-ink-muted)' }}
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              color: "var(--color-ink-muted)",
+            }}
           >
-            三鷹・吉祥寺・田無の皆様に支えられて創業40年
+            三鷹・吉祥寺・田無の皆様に
           </p>
           <h2
             style={{
               fontSize: 24,
               fontWeight: 600,
               lineHeight: 1.4,
-              color: 'var(--color-ink)',
+              color: "var(--color-ink)",
             }}
             className="lg:text-4xl"
           >
-            10年先も美しい塗り替えをお約束
+            10年先も美しい塗り替えを
           </h2>
         </div>
 
@@ -182,8 +215,8 @@ export default function Reasons() {
             image="/img/reason01.jpg"
             imageAlt="屋根上の職人"
             stats={[
-              { label: '累計施工実績', value: '5,000件以上' },
-              { label: '年間施工実績', value: '300件以上' },
+              { label: "累計施工実績", value: "5,000件以上" },
+              { label: "年間施工実績", value: "300件以上" },
             ]}
           />
 
