@@ -1,127 +1,120 @@
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Label } from './ui/label';
+import { Button } from './ui/button';
+
 export default function Contact() {
+  // 仮: 送信先（バックエンド）未接続。Formspree 等の導入はデプロイ先決定とセットで後決め。
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert('（仮）送信処理は未接続です。フォームの見た目確認用です。');
+  };
+
   return (
-    <footer id="contact" className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-primary-dark)' }}>
+    <footer id="contact" className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-canvas)' }}>
       {/* CTA Banner */}
       <div
-        className="relative mx-auto py-16 lg:py-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
+        className="mx-auto"
         style={{ maxWidth: 'var(--container-max)', padding: '64px var(--space-md)' }}
       >
-        {/* Left: Illustration + Title */}
-        <div className="flex flex-col items-center lg:items-start shrink-0">
-          {/* 画像部分は一旦撤去（後で使うかもしれないので残す / 2026-06-13）
-          <div
-            className="relative rounded-full overflow-hidden flex items-center justify-center bg-white"
-            style={{ width: 180, height: 180 }}
-          >
-            <img
-              src="/img/cta-contact.png"
-              alt="お問い合わせイラスト"
-              className="w-3/4 h-3/4 object-contain"
-            />
-          </div>
-          */}
+        {/* 画像部分は一旦撤去（後で使うかもしれないので残す / 2026-06-13）
+        <div
+          className="relative mx-auto mb-8 rounded-full overflow-hidden flex items-center justify-center bg-white"
+          style={{ width: 180, height: 180 }}
+        >
+          <img
+            src="/img/cta-contact.png"
+            alt="お問い合わせイラスト"
+            className="w-3/4 h-3/4 object-contain"
+          />
+        </div>
+        */}
 
-          <div className="text-center lg:text-left">
-            <p
-              aria-hidden="true"
-              className="mb-1"
-              style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontSize: 14,
-                fontWeight: 500,
-                color: 'var(--color-primary-mid)',
-              }}
-            >
-              Contact
-            </p>
-            <h2
-              className="text-3xl lg:text-4xl"
-              style={{
-                fontWeight: 600,
-                color: 'var(--color-on-primary-dark)',
-              }}
-            >
-              お問い合わせ
-            </h2>
-          </div>
+        {/* Section header（他セクション＝Works と同形: 和文大→英字小・中央）*/}
+        <div className="text-center mb-12">
+          <h2
+            className="mb-2 lg:text-4xl"
+            style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.4, color: 'var(--color-primary)' }}
+          >
+            お問い合わせ
+          </h2>
+          <p
+            aria-hidden="true"
+            style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: 14,
+              fontWeight: 500,
+              color: 'var(--color-ink-muted)',
+            }}
+          >
+            Contact
+          </p>
         </div>
 
-        {/* Right: Description + Buttons */}
-        <div className="flex-1 flex flex-col justify-center">
+        {/* Description + Form（中央・横幅を抑える）*/}
+        <div className="mx-auto" style={{ maxWidth: 640 }}>
           <p
-            className="mb-8 leading-relaxed"
+            className="mb-8 text-center leading-relaxed"
             style={{
               fontSize: 15,
               fontWeight: 400,
-              color: 'var(--color-on-primary-dark)',
-              opacity: 0.85,
+              color: 'var(--color-ink-muted)',
             }}
           >
             {/* <!-- TODO: Desktop.png からリード文を読み取り --> */}
             お見積り・ご相談は無料です。お気軽にお問い合わせください。
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            {/* Phone button - button-tel */}
-            <a
-              href="tel:0422-xx-xxxx"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg transition-opacity duration-200 hover:opacity-90"
-              style={{
-                backgroundColor: 'var(--color-primary-dark)',
-                border: '2px solid var(--color-on-primary-dark)',
-                color: 'var(--color-on-primary-dark)',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 600,
-                fontSize: 16,
-                minHeight: 48,
-                minWidth: 260,
-              }}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006.07 6.07l1.27-.34a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              {/* <!-- TODO: 電話番号を Desktop.png から読み取り --> */}
-              <span>お電話はこちら</span>
-            </a>
+          {/* お問い合わせフォーム（仮）— 既存 shadcn/ui 部品を配置。送信先は未接続 */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="contact-name" style={{ color: 'var(--color-ink)' }}>
+                お名前 <span style={{ color: 'var(--color-accent)' }}>*</span>
+              </Label>
+              <Input id="contact-name" name="name" required placeholder="宮口 太郎" />
+            </div>
 
-            {/* Form button - button-primary (accent red) */}
-            <a
-              href="#contact-form"
-              className="flex items-center justify-center gap-3 px-8 py-4 rounded-lg transition-opacity duration-200 hover:opacity-90"
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1 flex flex-col gap-1.5">
+                <Label htmlFor="contact-tel" style={{ color: 'var(--color-ink)' }}>
+                  電話番号
+                </Label>
+                <Input id="contact-tel" name="tel" type="tel" placeholder="0422-00-0000" />
+              </div>
+              <div className="flex-1 flex flex-col gap-1.5">
+                <Label htmlFor="contact-email" style={{ color: 'var(--color-ink)' }}>
+                  メールアドレス
+                </Label>
+                <Input id="contact-email" name="email" type="email" placeholder="example@mail.com" />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="contact-message" style={{ color: 'var(--color-ink)' }}>
+                お問い合わせ内容 <span style={{ color: 'var(--color-accent)' }}>*</span>
+              </Label>
+              <Textarea
+                id="contact-message"
+                name="message"
+                required
+                rows={4}
+                placeholder="お見積りのご希望箇所、ご相談内容などをご記入ください。"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="self-center mt-2 px-10 py-6 rounded-lg text-base"
               style={{
                 backgroundColor: 'var(--color-accent)',
                 color: 'var(--color-on-accent)',
                 fontWeight: 600,
-                fontSize: 16,
-                minHeight: 48,
                 minWidth: 220,
               }}
             >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg>
-              <span>お問い合わせフォーム</span>
-            </a>
-          </div>
+              送信する
+            </Button>
+          </form>
 
           <p
             className="mt-6"
@@ -139,14 +132,14 @@ export default function Contact() {
       {/* Footer bottom bar */}
       <div
         className="py-5 text-center"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ borderTop: '1px solid var(--color-hairline)' }}
       >
         <p
           style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: 12,
             fontWeight: 400,
-            color: 'rgba(255,255,255,0.4)',
+            color: 'var(--color-ink-muted)',
           }}
         >
           © 2024 宮口塗装. All Rights Reserved.
