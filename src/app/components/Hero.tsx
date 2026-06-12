@@ -1,3 +1,5 @@
+import HeroPhotoCarousel from "./HeroPhotoCarousel";
+
 /* ─────────────────────────────────────────────────────────
    Hero（FV） — SP起点 / モバイルファースト
    構造・数値・リキッドルールは sjnkbs 採用サイト FV を完全踏襲し、
@@ -75,26 +77,8 @@ export default function Hero() {
           style={{ width: `calc(180vw/375*100)` }} /* TD-5: 55% → calc 一貫化（@375で約180px） */
         />
 
-        {/* ② メイン写真カード（静止画1枚 / 例外: width:80% + rotate:10deg / 後で Swiper 化可能なよう独立 div で包む）*/}
-        <div
-          className="relative left-1/2 -mt-[calc(20vw/375*100)] w-[80%] -translate-x-1/2"
-          style={{ rotate: "10deg" }}
-        >
-          <div
-            className="overflow-hidden rounded-[8px]"
-            style={{
-              aspectRatio: "0.75",
-              /* TD-7: 影の px → calc 一貫化 */
-              boxShadow: `calc(4vw/375*100) calc(4vw/375*100) calc(32vw/375*100) 0 rgba(187, 165, 165, 0.3)`,
-            }}
-          >
-            <img
-              src="/img/mv-carousel-01.jpg"
-              alt="宮口塗装の施工現場の様子"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
+        {/* ② メイン写真カルーセル（Swiper cards 風の自動回転積み / 実装は HeroPhotoCarousel.tsx・仕様 02_spec/sjnkbs_carousel.md）*/}
+        <HeroPhotoCarousel />
 
         {/* ③ ブランド名ブロック（右寄せ / 写真に重ねる）*/}
         <div className="relative z-[2] ml-auto -mt-[calc(20vw/375*100)] w-fit">
