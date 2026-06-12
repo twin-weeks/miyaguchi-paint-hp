@@ -8,6 +8,7 @@ export default function Contact() {
       >
         {/* Left: Illustration + Title */}
         <div className="flex flex-col items-center lg:items-start shrink-0">
+          {/* 画像部分は一旦撤去（後で使うかもしれないので残す / 2026-06-13）
           <div
             className="relative rounded-full overflow-hidden flex items-center justify-center bg-white"
             style={{ width: 180, height: 180 }}
@@ -18,8 +19,9 @@ export default function Contact() {
               className="w-3/4 h-3/4 object-contain"
             />
           </div>
+          */}
 
-          <div className="mt-8 text-center lg:text-left">
+          <div className="text-center lg:text-left">
             <p
               aria-hidden="true"
               className="mb-1"
