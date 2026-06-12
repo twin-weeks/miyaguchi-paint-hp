@@ -130,17 +130,20 @@ export default function Hero() {
           >
             Scroll
           </span>
-          {/* 縦線 + 丸 + 外周リング（TD-6: 装飾UIの固定px → calc 一貫化）*/}
+          {/* 縦線 + 丸 + 外周リング（TD-6: 装飾UIの固定px → calc 一貫化 / scroll-anim: sjnkbs移植）*/}
           <div className="relative mt-[calc(4vw/375*100)] flex flex-col items-center pb-[calc(4vw/375*100)]">
-            <span className="h-[calc(33vw/375*100)] w-px rounded-sm bg-[var(--color-hero-accent)]" />
+            <span className="scrollbar-line-anim h-[calc(33vw/375*100)] w-px rounded-sm bg-[var(--color-hero-accent)]" />
             <div className="relative -mt-[calc(6vw/375*100)] size-[calc(40vw/375*100)]">
               <img
                 src="/img/circle-grey.svg"
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 size-[calc(40vw/375*100)]"
+                className="scrollbar-circle-anim absolute inset-0 size-[calc(40vw/375*100)]"
               />
-              <span className="absolute left-1/2 top-1/2 size-[calc(10vw/375*100)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-hero-accent)]" />
+              {/* 中央寄せはラッパ側 / 丸自身は scale アニメ専用（dot の transform 競合回避: spec §c）*/}
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span className="scrollbar-dot-anim block size-[calc(10vw/375*100)] rounded-full bg-[var(--color-hero-accent)]" />
+              </span>
             </div>
           </div>
         </div>

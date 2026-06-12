@@ -1,0 +1,44 @@
+/* FV「Scroll」インジケーター アニメ（sjnkbs移植 / 02_spec/sjnkbs_scroll_anim.md 準拠）
+   - line/dot: 3.2s 無限ループ / circle(リング): 1回のみ（起動時ふわっと出て静止）
+   - transform-origin は keyframes 側で切替えるため、要素側に origin-* を付けないこと */
+
+.scrollbar-line-anim   { animation: scroll-bar-scale    3.2s infinite; }
+.scrollbar-dot-anim    { animation: scroll-dot-scale    3.2s infinite; }
+.scrollbar-circle-anim { animation: scroll-circle-scale 3.2s; }
+
+@keyframes scroll-bar-scale {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  15%  { transform: scaleY(0); transform-origin: top; }
+  40%  { transform: scaleY(1); transform-origin: top; }
+  70%  { transform: scaleY(1); transform-origin: bottom; }
+  85%  { transform: scaleY(0); transform-origin: bottom; }
+  to   { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes scroll-dot-scale {
+  0%   { transform: scale(0); transform-origin: center; }
+  16%  { transform: scale(0); transform-origin: center; }
+  20%  { transform: scale(0); transform-origin: center; }
+  40%  { transform: scale(1); transform-origin: top; }
+  60%  { transform: scale(1); transform-origin: bottom; }
+  80%  { transform: scale(1); transform-origin: center; }
+  to   { transform: scale(0); transform-origin: center; }
+}
+
+@keyframes scroll-circle-scale {
+  0%   { transform: scale(0); opacity: 0;  transform-origin: center; }
+  16%  { transform: scale(0); opacity: 0;  transform-origin: center; }
+  30%  { transform: scale(0); opacity: 0;  transform-origin: center; }
+  40%  {                      opacity: .5; transform-origin: center; }
+  50%  { transform: scale(1); opacity: 1;  transform-origin: top; }
+  60%  { transform: scale(1); opacity: 1;  transform-origin: bottom; }
+  85%  { transform: scale(1); opacity: 1;  transform-origin: center; }
+  to   { transform: scale(1); opacity: 1;  transform-origin: center; }
+}
+
+/* sjnkbs には無い配慮を追加（reduced-motion でアニメ停止） */
+@media (prefers-reduced-motion: reduce) {
+  .scrollbar-line-anim,
+  .scrollbar-dot-anim,
+  .scrollbar-circle-anim { animation: none; }
+}
