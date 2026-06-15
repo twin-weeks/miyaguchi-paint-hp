@@ -41,7 +41,7 @@ function ReasonCard({
             <span
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: 13,
+                fontSize: "clamp(12px, 3.2vw, 13px)",
                 fontWeight: 600,
                 color: "var(--color-primary)",
                 writingMode: "vertical-rl",
@@ -55,7 +55,7 @@ function ReasonCard({
           {/* Text content */}
           <div className="flex-1 p-6 lg:py-8 lg:pr-8 lg:pl-2">
             <span
-              className="inline-block pb-1 mb-4 text-sm font-semibold"
+              className="inline-block pb-1 mb-4 text-[clamp(13px,3.6vw,14px)] font-semibold"
               style={{
                 color: "var(--color-ink)",
                 borderBottom: "2px solid var(--color-ink)",
@@ -66,20 +66,20 @@ function ReasonCard({
             <h3
               className="mb-4"
               style={{
-                fontSize: 18,
+                fontSize: "clamp(18px, 4.5vw, 24px)",
                 fontWeight: 600,
                 lineHeight: 1.4,
                 color: "var(--color-ink)",
               }}
             >
-              <span className="lg:text-2xl">{h3Line1}</span>
+              {h3Line1}
               <br />
-              <span className="lg:text-2xl">{h3Line2}</span>
+              {h3Line2}
             </h3>
             <p
               className="mb-6"
               style={{
-                fontSize: 14,
+                fontSize: "clamp(14px, 2.4vw, 16px)",
                 fontWeight: 400,
                 lineHeight: 1.8,
                 color: "var(--color-ink-muted)",
@@ -92,15 +92,15 @@ function ReasonCard({
                 {stats.map((stat) => (
                   <div key={stat.label}>
                     <p
-                      className="text-xs mb-1 font-semibold"
+                      className="text-[clamp(11px,2.8vw,12px)] mb-1 font-semibold"
                       style={{ color: "var(--color-primary)" }}
                     >
                       {stat.label}
                     </p>
                     <p
-                      className="text-xl lg:text-3xl"
                       style={{
                         fontFamily: "Montserrat, sans-serif",
+                        fontSize: "clamp(20px, 5vw, 30px)",
                         fontWeight: 600,
                         color: "var(--color-primary)",
                         lineHeight: 1.2,
@@ -163,7 +163,7 @@ export default function Reasons() {
             />
             <p
               style={{
-                fontSize: 16,
+                fontSize: "clamp(14px, 4vw, 16px)",
                 fontWeight: 600,
                 color: "var(--color-primary)",
               }}
@@ -176,7 +176,7 @@ export default function Reasons() {
             className="mb-3"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              fontSize: 13,
+              fontSize: "clamp(12px, 3.2vw, 13px)",
               fontWeight: 500,
               color: "var(--color-ink-muted)",
               letterSpacing: "0.05em",
@@ -186,12 +186,11 @@ export default function Reasons() {
           </p>
           <h2
             style={{
-              fontSize: 24,
+              fontSize: "clamp(24px, 5.5vw, 36px)",
               fontWeight: 600,
               lineHeight: 1.4,
               color: "var(--color-ink)",
             }}
-            className="lg:text-4xl"
           >
             10年先も美しい塗り替えを
           </h2>
