@@ -47,8 +47,8 @@ export default function About() {
           {/* Section header - centered */}
           <div className="text-center mb-12">
             <h2
-              className="mb-2 lg:text-4xl"
-              style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.4, color: 'var(--color-primary)' }}
+              className="mb-2"
+              style={{ fontSize: 'clamp(24px, 5.5vw, 36px)', fontWeight: 600, lineHeight: 1.4, color: 'var(--color-primary)' }}
             >
               会社概要
             </h2>
@@ -56,7 +56,7 @@ export default function About() {
               aria-hidden="true"
               style={{
                 fontFamily: 'Montserrat, sans-serif',
-                fontSize: 14,
+                fontSize: 'clamp(13px, 3.6vw, 14px)',
                 fontWeight: 500,
                 color: 'var(--color-ink-muted)',
               }}
@@ -74,7 +74,7 @@ export default function About() {
                     <th
                       className="text-left py-4 pr-8"
                       style={{
-                        fontSize: 14,
+                        fontSize: 'clamp(13px, 2.2vw, 14px)',
                         fontWeight: 600,
                         color: 'var(--color-ink)',
                         width: 120,
@@ -85,7 +85,7 @@ export default function About() {
                     </th>
                     <td
                       className="py-4"
-                      style={{ fontSize: 16, fontWeight: 400, color: 'var(--color-ink)' }}
+                      style={{ fontSize: 'clamp(14px, 2.4vw, 16px)', fontWeight: 400, color: 'var(--color-ink)' }}
                     >
                       {Array.isArray(row.value) ? (
                         <div className="flex flex-col gap-1">
@@ -106,27 +106,27 @@ export default function About() {
             <div className="mt-8">
               <h3
                 className="mb-4"
-                style={{ fontSize: 18, fontWeight: 600, color: 'var(--color-ink)' }}
+                style={{ fontSize: 'clamp(16px, 4vw, 20px)', fontWeight: 600, color: 'var(--color-ink)' }}
               >
                 対応エリア
               </h3>
               <div className="mb-4">
-                <p className="mb-1" style={{ fontSize: 14, fontWeight: 600, color: 'var(--color-primary)' }}>
+                <p className="mb-1" style={{ fontSize: 'clamp(13px, 3.6vw, 14px)', fontWeight: 600, color: 'var(--color-primary)' }}>
                   メイン拠点
                 </p>
-                <p style={{ fontSize: 16, fontWeight: 400, color: 'var(--color-ink)' }}>
+                <p style={{ fontSize: 'clamp(14px, 2.4vw, 16px)', fontWeight: 400, color: 'var(--color-ink)' }}>
                   三鷹市・武蔵野市（吉祥寺）・西東京市（田無）周辺
                 </p>
               </div>
               <div className="mb-4">
-                <p className="mb-1" style={{ fontSize: 14, fontWeight: 600, color: 'var(--color-primary)' }}>
+                <p className="mb-1" style={{ fontSize: 'clamp(13px, 3.6vw, 14px)', fontWeight: 600, color: 'var(--color-primary)' }}>
                   対応可能エリア
                 </p>
-                <p style={{ fontSize: 16, fontWeight: 400, color: 'var(--color-ink)' }}>
+                <p style={{ fontSize: 'clamp(14px, 2.4vw, 16px)', fontWeight: 400, color: 'var(--color-ink)' }}>
                   東京都内および近郊エリア
                 </p>
               </div>
-              <p style={{ fontSize: 14, fontWeight: 400, color: 'var(--color-ink-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: 'clamp(13px, 2.4vw, 15px)', fontWeight: 400, color: 'var(--color-ink-muted)', lineHeight: 1.6 }}>
                 40年間、地元を中心に活動してまいりましたが、ありがたいことにご紹介の輪が広がり、現在では東京近郊であればどこへでも伺っております。少し遠いかな？と思う場合でも、まずはお気軽にご相談ください。
               </p>
             </div>
