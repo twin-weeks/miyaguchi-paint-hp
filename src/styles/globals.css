@@ -2,43 +2,153 @@
    - line/dot: 3.2s 無限ループ / circle(リング): 1回のみ（起動時ふわっと出て静止）
    - transform-origin は keyframes 側で切替えるため、要素側に origin-* を付けないこと */
 
-.scrollbar-line-anim   { animation: scroll-bar-scale    3.2s infinite; }
-.scrollbar-dot-anim    { animation: scroll-dot-scale    3.2s infinite; }
-.scrollbar-circle-anim { animation: scroll-circle-scale 3.2s; }
+.scrollbar-line-anim {
+  animation: scroll-bar-scale 3.2s infinite;
+}
+.scrollbar-dot-anim {
+  animation: scroll-dot-scale 3.2s infinite;
+}
+.scrollbar-circle-anim {
+  animation: scroll-circle-scale 3.2s;
+}
 
 @keyframes scroll-bar-scale {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  15%  { transform: scaleY(0); transform-origin: top; }
-  40%  { transform: scaleY(1); transform-origin: top; }
-  70%  { transform: scaleY(1); transform-origin: bottom; }
-  85%  { transform: scaleY(0); transform-origin: bottom; }
-  to   { transform: scaleY(0); transform-origin: bottom; }
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  15% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  40% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  70% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  85% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
 }
 
 @keyframes scroll-dot-scale {
-  0%   { transform: scale(0); transform-origin: center; }
-  16%  { transform: scale(0); transform-origin: center; }
-  20%  { transform: scale(0); transform-origin: center; }
-  40%  { transform: scale(1); transform-origin: top; }
-  60%  { transform: scale(1); transform-origin: bottom; }
-  80%  { transform: scale(1); transform-origin: center; }
-  to   { transform: scale(0); transform-origin: center; }
+  0% {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  16% {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  20% {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  40% {
+    transform: scale(1);
+    transform-origin: top;
+  }
+  60% {
+    transform: scale(1);
+    transform-origin: bottom;
+  }
+  80% {
+    transform: scale(1);
+    transform-origin: center;
+  }
+  to {
+    transform: scale(0);
+    transform-origin: center;
+  }
 }
 
 @keyframes scroll-circle-scale {
-  0%   { transform: scale(0); opacity: 0;  transform-origin: center; }
-  16%  { transform: scale(0); opacity: 0;  transform-origin: center; }
-  30%  { transform: scale(0); opacity: 0;  transform-origin: center; }
-  40%  {                      opacity: .5; transform-origin: center; }
-  50%  { transform: scale(1); opacity: 1;  transform-origin: top; }
-  60%  { transform: scale(1); opacity: 1;  transform-origin: bottom; }
-  85%  { transform: scale(1); opacity: 1;  transform-origin: center; }
-  to   { transform: scale(1); opacity: 1;  transform-origin: center; }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+  }
+  16% {
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+  }
+  30% {
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+  }
+  40% {
+    opacity: 0.5;
+    transform-origin: center;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: top;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: bottom;
+  }
+  85% {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: center;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: center;
+  }
 }
 
 /* sjnkbs には無い配慮を追加（reduced-motion でアニメ停止） */
 @media (prefers-reduced-motion: reduce) {
   .scrollbar-line-anim,
   .scrollbar-dot-anim,
-  .scrollbar-circle-anim { animation: none; }
+  .scrollbar-circle-anim {
+    animation: none;
+  }
+}
+
+/* ③ 実績「流れる画像」マーキー（CSSのみ・無限横スクロール / 02_spec §C）
+   - 画像を2周ぶん並べ、トラックを -50% 動かすと継ぎ目が消える
+   - 速度は duration（works-marquee の 40s）だけで調整。数字を小さくすると速くなる
+   - 幅は固定pxを避け clamp で SP〜中間幅をなめらかに（0611リキッドタイポルール準拠） */
+.works-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: works-marquee 40s linear infinite;
+}
+
+.works-marquee-item {
+  flex: none;
+  height: clamp(120px, 16vw, 280px);
+  aspect-ratio: 4 / 3;
+  margin-right: var(--space-md);
+}
+
+@keyframes works-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works-marquee-track {
+    animation: none;
+  }
 }
