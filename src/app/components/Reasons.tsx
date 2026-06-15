@@ -233,6 +233,26 @@ export default function Reasons() {
             imageAlt="外壁のハケで塗装中"
           />
         </div>
+
+        {/* 末尾CTA：説得直後の一押し。リンク先は #contact フォーム。
+            押し込みエフェクトは FixedFooterCta と同じ作法（border-b-4 + active:translate）。 */}
+        <div className="flex justify-center mt-12">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border-b-4 px-[clamp(32px,8vw,56px)] py-[clamp(14px,3.5vw,18px)] text-white transition-all duration-150 active:translate-y-0.5 active:border-b-2"
+            style={{
+              backgroundColor: "var(--color-cta-blue)",
+              borderColor: "var(--color-cta-blue-dark)",
+            }}
+          >
+            <span className="text-[clamp(16px,4.2vw,20px)] font-bold tracking-wide">
+              無料見積もりはこちら
+            </span>
+            <span aria-hidden="true" className="text-[clamp(16px,4.2vw,20px)]">
+              →
+            </span>
+          </a>
+        </div>
         </Reveal>
       </div>
     </section>
