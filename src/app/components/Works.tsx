@@ -17,6 +17,8 @@ const worksData = [
   },
 ];
 
+import { Reveal } from "./Reveal";
+
 export default function Works() {
   return (
     <section
@@ -24,6 +26,7 @@ export default function Works() {
       style={{ padding: 'var(--section-gap) 0', backgroundColor: 'var(--color-surface-1)' }}
     >
       <div className="mx-auto" style={{ maxWidth: 'var(--container-max)', padding: '0 var(--space-md)' }}>
+        <Reveal>
         {/* Section header */}
         <div className="text-center mb-12">
           <h2
@@ -82,6 +85,7 @@ export default function Works() {
             VIEW MORE
           </button>
         </div>
+        </Reveal>
       </div>
     </section>
   );

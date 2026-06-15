@@ -25,6 +25,8 @@
      1行が溢れない/折り返す設計（サブタイトルの床を 14px に）。
    ※ PC版（CTAカード・lg:2カラム）は GreetingPc.tsx に保持。App.tsx は本ファイルを使用。
    ───────────────────────────────────────────────────────── */
+import { Reveal } from "./Reveal";
+
 export default function Greeting() {
   return (
     // 背景は透明（body=canvas=白が透ける）。z-10 で、帯からはみ出した装飾を
@@ -35,8 +37,8 @@ export default function Greeting() {
           ▼ 食い込み量の調整は Reasons 側の上パディング（pt）が唯一のツマミ。*/}
       <div className="overflow-x-clip px-6 pt-0 pb-0 md:pt-24 md:pb-0">
         <div className="relative mx-auto max-w-[1224px]">
-          {/* ───── ① テキストブロック（z-10）───── */}
-          <div className="relative z-10">
+          {/* ───── ① テキストブロック（z-10）───── スクロールでフェードアップ */}
+          <Reveal className="relative z-10">
             {/* "Message" ラベル */}
             <p
               className="m-0 text-sm font-medium leading-[1.4] text-[var(--color-hero-accent)] md:text-xl"
@@ -75,7 +77,7 @@ export default function Greeting() {
               aria-hidden="true"
               className="pointer-events-none absolute right-[calc(26vw/375*100)] top-[24px] w-[67px] md:-right-24 md:w-[117px] lg:right-8"
             />
-          </div>
+          </Reveal>
 
           {/* #1 灰ドット（小アクセント・outer基準。位置微調整は top を触る）*/}
           <img

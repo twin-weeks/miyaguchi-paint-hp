@@ -33,6 +33,8 @@ const companyInfo: { label: string; value: string | string[] }[] = [
   },
 ];
 
+import { Reveal } from "./Reveal";
+
 export default function About() {
   return (
     <section
@@ -40,6 +42,7 @@ export default function About() {
       style={{ padding: 'var(--section-gap) 0', backgroundColor: 'var(--color-surface-1)' }}
     >
       <div className="mx-auto" style={{ maxWidth: 'var(--container-max)', padding: '0 var(--space-md)' }}>
+        <Reveal>
         <div className="flex flex-col">
           {/* Section header - centered */}
           <div className="text-center mb-12">
@@ -129,6 +132,7 @@ export default function About() {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

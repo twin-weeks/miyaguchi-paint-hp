@@ -1,4 +1,8 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import HeroPhotoCarousel from "./HeroPhotoCarousel";
+import { entranceContainer, fadeUpItem, sweepInDeco } from "./Reveal";
 
 /* ─────────────────────────────────────────────────────────
    Hero（FV） — SP起点 / モバイルファースト
@@ -18,6 +22,7 @@ import HeroPhotoCarousel from "./HeroPhotoCarousel";
    ※ PC版（1440px固定 absolute）は HeroPc.tsx に保持。
    ───────────────────────────────────────────────────────── */
 export default function Hero() {
+  const reduce = useReducedMotion();
   return (
     <section
       id="hero"
@@ -48,10 +53,19 @@ export default function Hero() {
         style={{ width: 144, right: -24, top: -96 }}
       />
 
-      {/* ===== 中央寄せラッパ（sjnkbs: relative mx-auto mb-8 max-w-[1280px] pt-10）===== */}
-      <div className="relative mx-auto mb-[calc(32vw/375*100)] max-w-[480px] pt-[calc(40vw/375*100)]">
+      {/* ===== 中央寄せラッパ（sjnkbs: relative mx-auto mb-8 max-w-[1280px] pt-10）=====
+          登場アニメ: この div を stagger コンテナにし、子（コピー→写真→ブランド名→装飾）を順に出す */}
+      <motion.div
+        className="relative mx-auto mb-[calc(32vw/375*100)] max-w-[480px] pt-[calc(40vw/375*100)]"
+        variants={entranceContainer}
+        initial={reduce ? false : "hidden"}
+        animate="show"
+      >
         {/* ① キャッチコピー（3行・"創業40年" だけ青グラデ）*/}
-        <p className="relative z-[2] m-0 font-semibold leading-[1.3] text-[var(--color-ink)] text-[calc(28vw/375*100)] md:text-[calc(56vw/1440*100)] xl:text-[56px]">
+        <motion.p
+          variants={fadeUpItem}
+          className="relative z-[2] m-0 font-semibold leading-[1.3] text-[var(--color-ink)] text-[calc(28vw/375*100)] md:text-[calc(56vw/1440*100)] xl:text-[56px]"
+        >
           <span className="block">
             <span
               className="bg-clip-text text-transparent"
@@ -66,22 +80,30 @@ export default function Hero() {
           </span>
           <span className="block">街の塗装屋</span>
           <span className="block">確かな技術と実績</span>
-        </p>
+        </motion.p>
 
         {/* paint-underline（"確かな技術と実績" の下・独立配置 / プレビューで幅・位置を微調整）*/}
-        <img
+        <motion.img
+          variants={fadeUpItem}
           src="/img/paint-underline.png"
           alt=""
           aria-hidden="true"
           className="relative z-[2] mt-1 max-w-none"
-          style={{ width: `calc(180vw/375*100)` }} /* TD-5: 55% → calc 一貫化（@375で約180px） */
+          style={{
+            width: `calc(180vw/375*100)`,
+          }} /* TD-5: 55% → calc 一貫化（@375で約180px） */
         />
 
         {/* ② メイン写真カルーセル（Swiper cards 風の自動回転積み / 実装は HeroPhotoCarousel.tsx・仕様 02_spec/sjnkbs_carousel.md）*/}
-        <HeroPhotoCarousel />
+        <motion.div variants={fadeUpItem}>
+          <HeroPhotoCarousel />
+        </motion.div>
 
         {/* ③ ブランド名ブロック（右寄せ / 写真に重ねる）*/}
-        <div className="relative z-[2] ml-auto -mt-[calc(20vw/375*100)] w-fit">
+        <motion.div
+          variants={fadeUpItem}
+          className="relative z-[2] ml-auto -mt-[calc(20vw/375*100)] w-fit"
+        >
           {/* サブラベル + 下線 */}
           <div className="w-fit">
             <p className="m-0 font-bold leading-[1.77] text-[var(--color-hero-accent)] text-[calc(12vw/375*100)] md:text-[calc(18vw/1440*100)] xl:text-[18px]">
@@ -104,7 +126,7 @@ export default function Hero() {
             <br />
             PAINT
           </p>
-        </div>
+        </motion.div>
 
         {/* ④ Scroll インジケーター（SP左下 absolute / circle-grey.svg 素材使用）*/}
         <div className="absolute bottom-0 left-0 z-[3] flex w-fit flex-col items-center">
@@ -134,45 +156,57 @@ export default function Hero() {
 
         {/* ⑥ 装飾：浮遊アイコン ×4（後で motion ラップ可能なよう独立 div / SP座標 §7 SP@375）*/}
         {/* #0 青ハケ ← sjnkbs 赤鉛筆。left:0 / top:216px / w:70px */}
-        <div className="absolute left-0 z-[2] top-[calc(216vw/375*100)] w-[calc(70vw/375*100)]">
+        <motion.div
+          variants={sweepInDeco}
+          className="absolute left-0 z-[2] top-[calc(216vw/375*100)] w-[calc(56vw/375*100)]"
+        >
           <img
             src="/img/brush.png"
             alt=""
             aria-hidden="true"
             className="w-full max-w-none"
           />
-        </div>
+        </motion.div>
 
         {/* #1 屋根アイコン ← sjnkbs ピンクノートPC。right:-36px / top:350px / w:102px */}
-        <div className="absolute z-[2] -right-[calc(16vw/375*100)] top-[calc(400vw/375*100)] w-[calc(120vw/375*100)]">
+        <motion.div
+          variants={sweepInDeco}
+          className="absolute z-[2] -right-[calc(16vw/375*100)] top-[calc(400vw/375*100)] w-[calc(120vw/375*100)]"
+        >
           <img
             src="/img/Roof_Icon.png"
             alt=""
             aria-hidden="true"
             className="w-full max-w-none"
           />
-        </div>
+        </motion.div>
 
         {/* #2 paint-blue ← sjnkbs 書類アイコン。left:-16px / top:491px / w:78px */}
-        <div className="absolute z-[2] -left-[calc(16vw/375*100)] top-[calc(491vw/375*100)] w-[calc(78vw/375*100)]">
+        <motion.div
+          variants={sweepInDeco}
+          className="absolute z-[2] -left-[calc(4vw/375*100)] top-[calc(440vw/375*100)] w-[calc(56vw/375*100)]"
+        >
           <img
             src="/img/paint-blue.png"
             alt=""
             aria-hidden="true"
             className="w-full max-w-none"
           />
-        </div>
+        </motion.div>
 
         {/* #3 dot-blue ← sjnkbs 赤ドット。left:70px / top:578px / w:16px */}
-        <div className="absolute z-[2] left-[calc(96vw/375*100)] top-[calc(540vw/375*100)] w-[calc(16vw/375*100)]">
+        <motion.div
+          variants={sweepInDeco}
+          className="absolute z-[2] left-[calc(96vw/375*100)] top-[calc(540vw/375*100)] w-[calc(16vw/375*100)]"
+        >
           <img
             src="/img/dot-blue.svg"
             alt=""
             aria-hidden="true"
             className="w-full max-w-none"
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

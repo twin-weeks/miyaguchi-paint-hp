@@ -1,21 +1,28 @@
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { Label } from './ui/label';
-import { Button } from './ui/button';
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Label } from "./ui/label";
+import { Button } from "./ui/button";
 
 export default function Contact() {
   // 仮: 送信先（バックエンド）未接続。Formspree 等の導入はデプロイ先決定とセットで後決め。
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('（仮）送信処理は未接続です。フォームの見た目確認用です。');
+    alert("（仮）送信処理は未接続です。フォームの見た目確認用です。");
   };
 
   return (
-    <footer id="contact" className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-canvas)' }}>
+    <footer
+      id="contact"
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "var(--color-canvas)" }}
+    >
       {/* CTA Banner */}
       <div
         className="mx-auto"
-        style={{ maxWidth: 'var(--container-max)', padding: '64px var(--space-md)' }}
+        style={{
+          maxWidth: "var(--container-max)",
+          padding: "64px var(--space-md)",
+        }}
       >
         {/* 画像部分は一旦撤去（後で使うかもしれないので残す / 2026-06-13）
         <div
@@ -34,17 +41,22 @@ export default function Contact() {
         <div className="text-center mb-12">
           <h2
             className="mb-2 lg:text-4xl"
-            style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.4, color: 'var(--color-primary)' }}
+            style={{
+              fontSize: 24,
+              fontWeight: 600,
+              lineHeight: 1.4,
+              color: "var(--color-primary)",
+            }}
           >
             お問い合わせ
           </h2>
           <p
             aria-hidden="true"
             style={{
-              fontFamily: 'Montserrat, sans-serif',
+              fontFamily: "Montserrat, sans-serif",
               fontSize: 14,
               fontWeight: 500,
-              color: 'var(--color-ink-muted)',
+              color: "var(--color-ink-muted)",
             }}
           >
             Contact
@@ -58,40 +70,70 @@ export default function Contact() {
             style={{
               fontSize: 15,
               fontWeight: 400,
-              color: 'var(--color-ink-muted)',
+              color: "var(--color-ink)",
             }}
           >
             {/* <!-- TODO: Desktop.png からリード文を読み取り --> */}
-            お見積り・ご相談は無料です。お気軽にお問い合わせください。
+            お見積り・ご相談は無料です。
+            <br />
+            お気軽にお問い合わせください。
           </p>
 
           {/* お問い合わせフォーム（仮）— 既存 shadcn/ui 部品を配置。送信先は未接続 */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-name" style={{ color: 'var(--color-ink)' }}>
-                お名前 <span style={{ color: 'var(--color-accent)' }}>*</span>
+              <Label
+                htmlFor="contact-name"
+                style={{ color: "var(--color-ink)" }}
+              >
+                お名前 <span style={{ color: "var(--color-accent)" }}>*</span>
               </Label>
-              <Input id="contact-name" name="name" required placeholder="宮口 太郎" />
+              <Input
+                id="contact-name"
+                name="name"
+                required
+                placeholder="宮口 太郎"
+              />
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="contact-tel" style={{ color: 'var(--color-ink)' }}>
+                <Label
+                  htmlFor="contact-tel"
+                  style={{ color: "var(--color-ink)" }}
+                >
                   電話番号
                 </Label>
-                <Input id="contact-tel" name="tel" type="tel" placeholder="0422-00-0000" />
+                <Input
+                  id="contact-tel"
+                  name="tel"
+                  type="tel"
+                  placeholder="0422-00-0000"
+                />
               </div>
               <div className="flex-1 flex flex-col gap-1.5">
-                <Label htmlFor="contact-email" style={{ color: 'var(--color-ink)' }}>
+                <Label
+                  htmlFor="contact-email"
+                  style={{ color: "var(--color-ink)" }}
+                >
                   メールアドレス
                 </Label>
-                <Input id="contact-email" name="email" type="email" placeholder="example@mail.com" />
+                <Input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  placeholder="example@mail.com"
+                />
               </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="contact-message" style={{ color: 'var(--color-ink)' }}>
-                お問い合わせ内容 <span style={{ color: 'var(--color-accent)' }}>*</span>
+              <Label
+                htmlFor="contact-message"
+                style={{ color: "var(--color-ink)" }}
+              >
+                お問い合わせ内容{" "}
+                <span style={{ color: "var(--color-accent)" }}>*</span>
               </Label>
               <Textarea
                 id="contact-message"
@@ -104,11 +146,12 @@ export default function Contact() {
 
             <Button
               type="submit"
-              className="self-center mt-2 px-10 py-6 rounded-lg text-base"
+              className="self-center mt-2 px-10 py-6 rounded-lg text-base border-b-4 transition-all duration-150 active:translate-y-0.5 active:border-b-2"
               style={{
-                backgroundColor: 'var(--color-accent)',
-                color: 'var(--color-on-accent)',
-                fontWeight: 600,
+                backgroundColor: "var(--color-cta-blue)",
+                borderColor: "var(--color-cta-blue-dark)",
+                color: "#fff",
+                fontWeight: 700,
                 minWidth: 220,
               }}
             >
@@ -121,7 +164,7 @@ export default function Contact() {
             style={{
               fontSize: 12,
               fontWeight: 400,
-              color: 'var(--color-primary-mid)',
+              color: "var(--color-primary-mid)",
             }}
           >
             {/* <!-- TODO: 受付時間を Desktop.png から読み取り --> */}
@@ -132,14 +175,14 @@ export default function Contact() {
       {/* Footer bottom bar */}
       <div
         className="py-5 text-center"
-        style={{ borderTop: '1px solid var(--color-hairline)' }}
+        style={{ borderTop: "1px solid var(--color-hairline)" }}
       >
         <p
           style={{
-            fontFamily: 'Montserrat, sans-serif',
+            fontFamily: "Montserrat, sans-serif",
             fontSize: 12,
             fontWeight: 400,
-            color: 'var(--color-ink-muted)',
+            color: "var(--color-ink-muted)",
           }}
         >
           © 2024 宮口塗装. All Rights Reserved.

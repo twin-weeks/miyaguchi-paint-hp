@@ -129,6 +129,8 @@ function ReasonCard({
   );
 }
 
+import { Reveal } from "./Reveal";
+
 export default function Reasons() {
   return (
     // 食い込みセクション：Greeting の帯下端からはみ出した装飾（木・ローラー・
@@ -147,6 +149,7 @@ export default function Reasons() {
           padding: "0 var(--space-md)",
         }}
       >
+        <Reveal>
         {/* Section header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-1">
@@ -230,6 +233,7 @@ export default function Reasons() {
             imageAlt="外壁のハケで塗装中"
           />
         </div>
+        </Reveal>
       </div>
     </section>
   );
