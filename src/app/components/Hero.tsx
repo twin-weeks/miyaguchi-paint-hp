@@ -228,17 +228,6 @@ export default function Hero() {
         </motion.div>
 
         {/* #2 paint-blue ← sjnkbs 書類アイコン。left:-16px / top:491px / w:78px */}
-        <motion.div
-          variants={sweepInDeco}
-          className="absolute z-[2] -left-[calc(4cqw/375*100)] top-[calc(448cqw/375*100)] w-[calc(72cqw/375*100)]"
-        >
-          <img
-            src="/img/paint-blue.png"
-            alt=""
-            aria-hidden="true"
-            className="w-full max-w-none"
-          />
-        </motion.div>
 
         {/* #3 dot-blue ← sjnkbs 赤ドット。left:70px / top:578px / w:16px */}
         <motion.div
