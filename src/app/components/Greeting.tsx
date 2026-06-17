@@ -12,7 +12,7 @@
 
    ★ Hero(FV) との違い（完全リスト §7-1）:
    - テキストは vw リキッドにしない。宮口の clamp() 方式を維持（段階的に頭打ち）。
-   - 装飾だけ「SP=375vw ＋ bottom-* 底揃え ＋ overflow-x-clip はみ出し」、
+   - 装飾だけ「SP=375cqw ＋ bottom-* 底揃え ＋ overflow-x-clip はみ出し」、
      位置オフセット・deco 幅は固定px（完全リスト §2/§5 の値をそのまま流用）。
 
    井上さん確定（2026-06-10）:
@@ -35,27 +35,27 @@ export default function Greeting() {
       {/* はみ出しクリップ＋左右24px。pb-0で「装飾帯の下端」でセクションを終わらせ、
           帯から下にはみ出した装飾(#3〜#6)を Reasons 領域へ食い込ませる。
           ▼ 食い込み量の調整は Reasons 側の上パディング（pt）が唯一のツマミ。*/}
-      <div className="overflow-x-clip px-6 pt-0 pb-0 md:pt-24 md:pb-0">
+      <div className="overflow-x-clip px-6 pt-0 pb-0">
         <div className="relative mx-auto max-w-[1224px]">
           {/* ───── ① テキストブロック（z-10）───── スクロールでフェードアップ */}
           <Reveal className="relative z-10">
             {/* "Message" ラベル */}
             <p
-              className="m-0 text-sm font-medium leading-[1.4] text-[var(--color-hero-accent)] md:text-xl"
+              className="m-0 text-sm font-medium leading-[1.4] text-[var(--color-hero-accent)]"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               Message
             </p>
 
             {/* サブタイトル＋下線（nowrap なし・床14pxで320pxでも収まる）*/}
-            <p className="mt-2 inline-block border-b-2 border-[var(--color-hero-accent)] pb-2 text-[clamp(14px,3.5vw,20px)] font-semibold leading-[1.4] text-[var(--color-hero-accent)]">
+            <p className="mt-2 inline-block border-b-2 border-[var(--color-hero-accent)] pb-2 text-[clamp(14px,3.5cqw,20px)] font-semibold leading-[1.4] text-[var(--color-hero-accent)]">
               三鷹・吉祥寺・田無で塗装ひと筋
             </p>
 
             {/* 見出し（小→大の2段。sjnkbs 構造に合わせ1つの <p> に2 span）*/}
-            <p className="m-0 mt-6 font-semibold text-[var(--color-ink)] md:mt-8">
+            <p className="m-0 mt-6 font-semibold text-[var(--color-ink)]">
               {/* 見出し2：SP 32 → md 48（宮口現状維持＝sjnkbs 大と一致）*/}
-              <span className="mt-2 block text-[clamp(32px,7vw,48px)] leading-[1.4]">
+              <span className="mt-2 block text-[clamp(32px,7cqw,48px)] leading-[1.4]">
                 地域に愛されて
                 <br />
                 40年の塗装屋です
@@ -63,7 +63,7 @@ export default function Greeting() {
             </p>
 
             {/* 本文（常に改行＝sjnkbs 準拠。折返しテキストなので狭幅でも溢れない）*/}
-            <p className="m-0 mt-4 text-[clamp(15px,2.2vw,18px)] font-medium leading-[2.4] text-[var(--color-ink)] md:mt-6">
+            <p className="m-0 mt-4 text-[clamp(15px,2.2cqw,18px)] font-medium leading-[2.4] text-[var(--color-ink)]">
               地域の皆様に選ばれ続けてきた理由。それは「10年後も変わらない美しさと耐久性」です。
               建物の状態や地域の環境を見極め、一塗り一塗りに魂を込める。
               私たちが培ってきた職人の技で、あなたの大切な住まいを守り抜きます。
@@ -75,7 +75,7 @@ export default function Greeting() {
               src="/img/message-deco_sp.svg"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute right-[calc(26vw/375*100)] top-[24px] w-[67px] md:-right-24 md:w-[117px] lg:right-8"
+              className="pointer-events-none absolute right-[calc(26cqw/375*100)] top-[24px] w-[67px]"
             />
           </Reveal>
 
@@ -84,21 +84,21 @@ export default function Greeting() {
             src="/img/dot-gray.svg"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute right-72 top-[400px] z-[2] w-3 md:right-[calc(240vw/1440*100)] md:top-[110px]"
+            className="pointer-events-none absolute right-72 top-[400px] z-[2] w-3"
           />
 
           {/* ───── ② 装飾帯（テキストの「下」に通常フロー配置）─────
               #2 青ビルが通常フロー要素＝帯の高さを自動決定。
               #3〜#6 は帯内 absolute・bottom 基準（=ビル下端基準）で相対位置を維持。
               ▼ 帯全体の上下位置を動かすツマミ＝下の mt-* だけ。*/}
-          <div className="relative mt-[calc(-24vw/375*100)] md:mt-16">
+          <div className="relative mt-[calc(-24cqw/375*100)]">
             {/* #2 青ビル群（大・右下スカイライン）← sjnkbs 赤ビル。
                 block + ml-auto で右寄せ、負 mr で画面右へはみ出し */}
             <img
               src="/img/ビルのイラスト.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none block ml-auto -mr-[90px] w-[calc(335vw/375*100)] max-w-[806px] md:w-[calc(1075vw/1024*100)] xl:-mr-[188px] xl:max-w-[1075px]"
+              className="pointer-events-none block ml-auto -mr-[90px] w-[calc(335cqw/375*100)] max-w-[806px]"
             />
 
             {/* #3 ピンクビル群（左下スカイライン）*/}
@@ -106,7 +106,7 @@ export default function Greeting() {
               src="/img/message-bg-building-pink.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-[-16px] left-[-104px] w-[calc(206vw/375*100)] max-w-[564px] md:bottom-[-106px] md:w-[calc(752vw/1024*100)] xl:left-[-242px] xl:max-w-[662px]"
+              className="pointer-events-none absolute bottom-[-16px] left-[-104px] w-[calc(206cqw/375*100)] max-w-[564px]"
             />
 
             {/* #4 木・大 */}
@@ -114,7 +114,7 @@ export default function Greeting() {
               src="/img/木のイラスト.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-[-42px] right-[calc(6vw/375*100)] w-[calc(64vw/375*100)] max-w-[132px] md:bottom-[-62px] md:right-[calc(48vw/1440*100)] md:w-[calc(132vw/1440*100)]"
+              className="pointer-events-none absolute bottom-[-42px] right-[calc(6cqw/375*100)] w-[calc(64cqw/375*100)] max-w-[132px]"
             />
 
             {/* #5 木・小 */}
@@ -122,11 +122,11 @@ export default function Greeting() {
               src="/img/message-tree-small.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-[-55px] right-[calc(76vw/375*100)] w-[calc(40vw/375*100)] max-w-[100px] md:bottom-[-76px] md:right-[calc(215vw/1440*100)] md:w-[calc(100vw/1440*100)]"
+              className="pointer-events-none absolute bottom-[-55px] right-[calc(76cqw/375*100)] w-[calc(40cqw/375*100)] max-w-[100px]"
             />
 
             {/* #6 電卓＋楕円 → ローラー＋楕円（楕円台座の中央にローラーを重ねる・固定px）*/}
-            <div className="pointer-events-none absolute bottom-[-118px] -left-20 w-[171px] md:bottom-[-205px] md:-left-40 md:w-[359px]">
+            <div className="pointer-events-none absolute bottom-[-118px] -left-20 w-[171px]">
               <img
                 src="/img/roller-ellipse-bg.svg"
                 alt=""

@@ -2,3 +2,17 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+/* ===== SPロック①：ブレイクポイント無効化（宮口さん共有・一旦公開用） =====
+   md/lg 等の発火幅を 9999px にして事実上どの画面でも発火させない。
+   → 全セクションがスマホレイアウトのまま固定される（PCナビ↔ハンバーガーの
+     切替や lg:flex-row 等の構造切替を止める）。
+   ▼ PC本格着手時：この @theme ブロックを丸ごと削除すれば 768/1024 が復活する。
+   （関連：globals.css の .app-shell ＝ SPロック②③／詳細は 00_TODO「PC化TODO」）*/
+@theme {
+  --breakpoint-sm: 9999px;
+  --breakpoint-md: 9999px;
+  --breakpoint-lg: 9999px;
+  --breakpoint-xl: 9999px;
+  --breakpoint-2xl: 9999px;
+}

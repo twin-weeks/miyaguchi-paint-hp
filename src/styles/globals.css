@@ -121,6 +121,38 @@
   }
 }
 
+/* ===== SPロック②③：アプリ全体を「上限つきゴムの棚（コンテナ）」に入れる =====
+   ・width:100% + max-width:430px ＝ スマホ幅では画面に追従、PC幅では430で止め中央寄せ
+   ・container-type: inline-size ＝ 中身の cqw が「画面幅」でなく「この棚幅」を基準に測る
+     （= Hero/Greeting 等の生vw→cqw 化と対で効く。棚が430で頭打ち＝文字も頭打ち）
+   ・overflow-x: clip ＝ 装飾のはみ出しが横スクロールを生まないようカラム端で切る
+   ▼ PC本格着手時：下の @media を有効化（or max-width を none に）して棚のストッパーを外す。
+     その際、各セクションは SP版↔*Pc.tsx を lg: で出し分ける（詳細は 00_TODO「PC化TODO」）。
+   ※ 画面 < 430px（実機スマホ）では棚＝画面幅となり cqw==vw。つまりスマホ表示は一切変わらない。*/
+.app-shell {
+  width: 100%;
+  max-width: 430px;
+  margin-inline: auto;
+  container-type: inline-size;
+  overflow-x: clip;
+  background-color: var(--color-canvas);
+}
+
+/* PCで棚(app-shell)の左右に出る余白色。PCではスマホ1本カラムの背景フレームになる。
+   実機スマホでは棚＝全幅なので見えない。
+   ※ かつてヘッダーが sticky(=flow占有)のとき、この色が最上部の帯として透けて出る
+     バグがあったが、ヘッダーを fixed(=flow非占有・Heroに重なる)へ変更して解消済み
+     （2026-06-17）。Hero が y=0 から埋めるので最上部に色帯は出ない。 */
+body {
+  background-color: #dcdcdc;
+}
+
+/* PC着手時に解放するための予約（今はコメントアウト）。
+@media (min-width: 1024px) {
+  .app-shell { max-width: none; container-type: normal; overflow-x: visible; }
+}
+*/
+
 /* ③ 実績「流れる画像」マーキー（CSSのみ・無限横スクロール / 02_spec §C）
    - 画像を2周ぶん並べ、トラックを -50% 動かすと継ぎ目が消える
    - 速度は duration（works-marquee の 40s）だけで調整。数字を小さくすると速くなる
@@ -133,7 +165,7 @@
 
 .works-marquee-item {
   flex: none;
-  height: clamp(120px, 16vw, 280px);
+  height: clamp(120px, 16cqw, 280px);
   aspect-ratio: 4 / 3;
   margin-right: var(--space-md);
 }

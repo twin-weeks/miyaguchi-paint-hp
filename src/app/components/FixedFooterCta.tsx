@@ -6,11 +6,19 @@
      下辺の濃い色 + active:translate で押し込みエフェクト。
    ・幅は固定pxを使わず flex-1 で等分（リキッド）。
    ※ 本文がバーに隠れないよう App 側で末尾にスペーサーを置く。
+   ・出現制御: 最上部では画面外（translate-y-full）に隠し、
+     useScrolledPast（FVを6割ほど見たら true）で下からスライドイン。
+     Header のロゴ帯と同じしきい値で出方を揃える。
    ───────────────────────────────────────────────────────── */
+import { useScrolledPast } from "../hooks/useScrolledPast";
+
 export default function FixedFooterCta() {
+  const shown = useScrolledPast();
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 flex gap-2 px-2 py-2 shadow-[0_-2px_12px_rgba(0,0,0,0.08)]"
+      className={`fixed inset-x-0 bottom-0 z-40 mx-auto flex max-w-[430px] gap-2 px-2 py-2 shadow-[0_-2px_12px_rgba(0,0,0,0.08)] transition-transform duration-300 ease-out ${
+        shown ? "translate-y-0" : "pointer-events-none translate-y-full"
+      }`}
       style={{ backgroundColor: "rgba(85, 85, 85, 0.5)" }}
     >
       {/* 電話（オレンジ） */}

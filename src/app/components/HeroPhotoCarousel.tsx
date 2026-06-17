@@ -70,7 +70,7 @@ export default function HeroPhotoCarousel() {
     // 位置・サイズは置換前の静止カード div を踏襲（left-1/2 / w-80% / -mt / ar0.75）
     // perspective で translateZ の奥行きを有効化。rotate=BASE_TILT で「枠ごと傾け」(b)。
     <div
-      className="relative left-1/2 -mt-[calc(20vw/375*100)] w-[80%] -translate-x-1/2"
+      className="relative left-1/2 -mt-[calc(20cqw/375*100)] w-[80%] -translate-x-1/2"
       style={{
         aspectRatio: "0.75",
         perspective: `${PERSPECTIVE_PX}px`,
@@ -89,7 +89,7 @@ export default function HeroPhotoCarousel() {
               zIndex: SLIDES.length - pos,
               transition: `transform ${TRANSITION_MS}ms ease, z-index 0ms`,
               /* TD-7 由来の宮口ソフト影（枠の落ち影）*/
-              boxShadow: `calc(4vw/375*100) calc(4vw/375*100) calc(32vw/375*100) 0 rgba(187, 165, 165, 0.3)`,
+              boxShadow: `calc(4cqw/375*100) calc(4cqw/375*100) calc(32cqw/375*100) 0 rgba(187, 165, 165, 0.3)`,
             }}
           >
             <img

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useScrolledPast } from "../hooks/useScrolledPast";
 
 /* ─────────────────────────────────────────────────────────
    Header — 中央ロゴ型のブランディング帯（Figma実測を翻訳）
@@ -26,13 +27,21 @@ const BAR_GRADIENT = "linear-gradient(180deg, #F3F3F3 0%, #B1B1B1 100%)";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  /* SPで「最上部はハンバーガーだけ → 6割スクロールで帯＋ロゴ出現」用。
+     md+（PC）は常時表示なので各クラスを md: で上書きして影響させない。*/
+  const scrolled = useScrolledPast();
 
   return (
     <>
-      {/* ===== ヘッダー本体（sticky・ロゴ + PC横ナビ）===== */}
+      {/* ===== ヘッダー本体（sticky・ロゴ + PC横ナビ）=====
+          SP最上部: 背景透明・下線なし（Hero が透けて浮遊ハンバーガーだけ見える）。
+          6割スクロール後: canvas 背景 + 紺の下線をフェードイン。*/}
       <header
-        className="sticky left-0 top-0 z-[100] w-full bg-[var(--color-canvas)]"
-        style={{ borderBottom: "1px solid var(--color-hero-accent)" }}
+        className={`fixed inset-x-0 top-0 z-[100] mx-auto w-full max-w-[430px] border-b transition-[background-color,border-color] duration-300 md:border-[color:var(--color-hero-accent)] md:bg-[var(--color-canvas)] ${
+          scrolled
+            ? "border-[color:var(--color-hero-accent)] bg-[var(--color-canvas)]"
+            : "border-transparent bg-transparent"
+        }`}
       >
         <div
           className="mx-auto flex flex-col items-center gap-1 md:flex-row md:justify-between md:gap-0"
@@ -45,7 +54,9 @@ export default function Header() {
           <a
             href="#"
             onClick={() => setOpen(false)}
-            className="flex flex-col items-center md:items-start"
+            className={`flex flex-col items-center transition-opacity duration-300 md:pointer-events-auto md:items-start md:opacity-100 ${
+              scrolled ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           >
             <span className="flex items-center gap-0">
               <img
@@ -121,36 +132,43 @@ export default function Header() {
         ))}
       </nav>
 
-      {/* 開閉ボタン（丸・浮遊・最前面 z-[101]）*/}
-      <button
-        type="button"
-        aria-label={open ? "メニューを閉じる" : "メニューを開く"}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="fixed right-4 top-20 z-[101] flex size-[56px] items-center justify-center rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.25)] md:hidden"
-        style={{ backgroundColor: "#2C2EBA" }}
-      >
-        <span className="relative flex h-[18px] w-6 flex-col items-center justify-between">
-          <span
-            className="block h-[3px] w-full rounded-full transition-transform duration-200"
-            style={{
-              background: BAR_GRADIENT,
-              transform: open ? "translateY(7.5px) rotate(45deg)" : undefined,
-            }}
-          />
-          <span
-            className="block h-[3px] w-full rounded-full transition-opacity duration-200"
-            style={{ background: BAR_GRADIENT, opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="block h-[3px] w-full rounded-full transition-transform duration-200"
-            style={{
-              background: BAR_GRADIENT,
-              transform: open ? "translateY(-7.5px) rotate(-45deg)" : undefined,
-            }}
-          />
-        </span>
-      </button>
+      {/* 開閉ボタン（丸・浮遊・最前面 z-[101]）
+          SPロック：fixed 全幅→max-w-[430px] 中央ラッパ内に absolute right-4 で置くと、
+          PC幅でもボタンが「430カラムの右端」に来る（画面右端に離れない）。
+          ラッパは pointer-events-none、ボタンだけ pointer-events-auto で当たり判定を限定。*/}
+      <div className="pointer-events-none fixed inset-x-0 top-8 z-[101] mx-auto max-w-[430px] md:hidden">
+        <button
+          type="button"
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="pointer-events-auto absolute right-4 top-0 flex size-[56px] items-center justify-center rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.25)]"
+          style={{ backgroundColor: "#2C2EBA" }}
+        >
+          <span className="relative flex h-[18px] w-6 flex-col items-center justify-between">
+            <span
+              className="block h-[3px] w-full rounded-full transition-transform duration-200"
+              style={{
+                background: BAR_GRADIENT,
+                transform: open ? "translateY(7.5px) rotate(45deg)" : undefined,
+              }}
+            />
+            <span
+              className="block h-[3px] w-full rounded-full transition-opacity duration-200"
+              style={{ background: BAR_GRADIENT, opacity: open ? 0 : 1 }}
+            />
+            <span
+              className="block h-[3px] w-full rounded-full transition-transform duration-200"
+              style={{
+                background: BAR_GRADIENT,
+                transform: open
+                  ? "translateY(-7.5px) rotate(-45deg)"
+                  : undefined,
+              }}
+            />
+          </span>
+        </button>
+      </div>
     </>
   );
 }

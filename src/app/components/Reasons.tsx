@@ -41,7 +41,7 @@ function ReasonCard({
             <span
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: "clamp(12px, 3.2vw, 13px)",
+                fontSize: "clamp(12px, 3.2cqw, 13px)",
                 fontWeight: 600,
                 color: "var(--color-primary)",
                 writingMode: "vertical-rl",
@@ -55,7 +55,7 @@ function ReasonCard({
           {/* Text content */}
           <div className="flex-1 p-6 lg:py-8 lg:pr-8 lg:pl-2">
             <span
-              className="inline-block pb-1 mb-4 text-[clamp(13px,3.6vw,14px)] font-semibold"
+              className="inline-block pb-1 mb-4 text-[clamp(13px,3.6cqw,14px)] font-semibold"
               style={{
                 color: "var(--color-ink)",
                 borderBottom: "2px solid var(--color-ink)",
@@ -66,7 +66,7 @@ function ReasonCard({
             <h3
               className="mb-4"
               style={{
-                fontSize: "clamp(18px, 4.5vw, 24px)",
+                fontSize: "clamp(18px, 4.5cqw, 24px)",
                 fontWeight: 600,
                 lineHeight: 1.4,
                 color: "var(--color-ink)",
@@ -79,7 +79,7 @@ function ReasonCard({
             <p
               className="mb-6"
               style={{
-                fontSize: "clamp(14px, 2.4vw, 16px)",
+                fontSize: "clamp(14px, 2.4cqw, 16px)",
                 fontWeight: 400,
                 lineHeight: 1.8,
                 color: "var(--color-ink-muted)",
@@ -92,7 +92,7 @@ function ReasonCard({
                 {stats.map((stat) => (
                   <div key={stat.label}>
                     <p
-                      className="text-[clamp(11px,2.8vw,12px)] mb-1 font-semibold"
+                      className="text-[clamp(11px,2.8cqw,12px)] mb-1 font-semibold"
                       style={{ color: "var(--color-primary)" }}
                     >
                       {stat.label}
@@ -100,7 +100,7 @@ function ReasonCard({
                     <p
                       style={{
                         fontFamily: "Montserrat, sans-serif",
-                        fontSize: "clamp(20px, 5vw, 30px)",
+                        fontSize: "clamp(20px, 5cqw, 30px)",
                         fontWeight: 600,
                         color: "var(--color-primary)",
                         lineHeight: 1.2,
@@ -163,7 +163,7 @@ export default function Reasons() {
             />
             <p
               style={{
-                fontSize: "clamp(14px, 4vw, 16px)",
+                fontSize: "clamp(14px, 4cqw, 16px)",
                 fontWeight: 600,
                 color: "var(--color-primary)",
               }}
@@ -176,7 +176,7 @@ export default function Reasons() {
             className="mb-3"
             style={{
               fontFamily: "Montserrat, sans-serif",
-              fontSize: "clamp(12px, 3.2vw, 13px)",
+              fontSize: "clamp(12px, 3.2cqw, 13px)",
               fontWeight: 500,
               color: "var(--color-ink-muted)",
               letterSpacing: "0.05em",
@@ -186,7 +186,7 @@ export default function Reasons() {
           </p>
           <h2
             style={{
-              fontSize: "clamp(24px, 5.5vw, 36px)",
+              fontSize: "clamp(24px, 5.5cqw, 36px)",
               fontWeight: 600,
               lineHeight: 1.4,
               color: "var(--color-ink)",
@@ -238,16 +238,16 @@ export default function Reasons() {
         <div className="flex justify-center mt-12">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border-b-4 px-[clamp(32px,8vw,56px)] py-[clamp(14px,3.5vw,18px)] text-white transition-all duration-150 active:translate-y-0.5 active:border-b-2"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border-b-4 px-[clamp(32px,8cqw,56px)] py-[clamp(14px,3.5cqw,18px)] text-white transition-all duration-150 active:translate-y-0.5 active:border-b-2"
             style={{
               backgroundColor: "var(--color-cta-blue)",
               borderColor: "var(--color-cta-blue-dark)",
             }}
           >
-            <span className="text-[clamp(16px,4.2vw,20px)] font-bold tracking-wide">
+            <span className="text-[clamp(16px,4.2cqw,20px)] font-bold tracking-wide">
               無料見積もりはこちら
             </span>
-            <span aria-hidden="true" className="text-[clamp(16px,4.2vw,20px)]">
+            <span aria-hidden="true" className="text-[clamp(16px,4.2cqw,20px)]">
               →
             </span>
           </a>

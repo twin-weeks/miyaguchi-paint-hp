@@ -15,11 +15,11 @@
   --color-cta-blue-dark: #164275;
 
   /* Hero / FV */
-  --color-hero-accent: #2C53BA;
+  --color-hero-accent: #2C38BA; /* Figma: 吉祥寺・三鷹・田無の塗装専門店ほかアクセント青 */
   --color-hero-brand: #6155F5;
 
   /* Neutral */
-  --color-ink: #333333;
+  --color-ink: #363636; /* Figma: 本文インク（創業40年コピー等） */
   --color-ink-muted: #666666;
   --color-canvas: #FFFFFF;
   --color-surface-1: #F7F7F7;
