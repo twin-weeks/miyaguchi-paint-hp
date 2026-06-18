@@ -71,7 +71,7 @@ export default function Hero() {
               マイナスを大きく→上へ。framer-motion と干渉しないようコピーを span で包んで掛ける */}
           <span
             className="block"
-            style={{ transform: `translateY(calc(-12cqw/375*100))` }}
+            style={{ transform: `translateY(calc(8cqw/375*100))` }}
           >
             <span className="block">
               <span
@@ -92,9 +92,8 @@ export default function Hero() {
               <span className="relative inline-block">
                 {/* テキストを z-[1] で持ち上げ、マーカー(z-auto)の上に重ねる＝マーカーが文字の裏に回る（蛍光ペン式）*/}
                 <span className="relative z-[1]">
-                  確かな技術と
+                  確かな技術と実績
                   <br />
-                  実績
                 </span>
                 <motion.span
                   variants={fadeUpItem}
@@ -112,7 +111,10 @@ export default function Hero() {
         </motion.p>
 
         {/* ② メイン写真カルーセル（Swiper cards 風の自動回転積み / 実装は HeroPhotoCarousel.tsx・仕様 02_spec/sjnkbs_carousel.md）*/}
-        <motion.div variants={fadeUpItem}>
+        <motion.div
+          variants={fadeUpItem}
+          className="mt-[calc(24cqw/375*100)]" /* 写真の下げツマミ: 数字↑で下へ（上に余白を足す）。フローなので下のブランド名③も一緒に下がる */
+        >
           <HeroPhotoCarousel />
         </motion.div>
 
@@ -126,16 +128,8 @@ export default function Hero() {
             {/* 白ハケ背景: サブラベルが写真に被って読めない問題の対策。
                 黄マーカーと筆跡を揃えるため、同じ paint-underline.png を mask（型紙）として使い色だけ白で塗る。
                 収め方も mask-size:100%_100%（伸縮）に統一（旧: paint-wh.png を object-cover でトリミングしていた）*/}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/3 z-0 block -translate-x-1/2 -translate-y-1/2 bg-white [mask-image:url(/img/paint-underline.png)] [mask-repeat:no-repeat] [mask-size:100%_100%]"
-              style={{
-                width: `calc(240cqw/375*100)` /* 横幅ツマミ */,
-                height: `calc(24cqw/375*100)` /* 高さツマミ */,
-              }}
-            />
             <p className="relative z-[1] m-0 font-bold leading-[1.77] text-[var(--color-hero-accent)] text-[calc(12cqw/375*100)]">
-              吉祥寺・三鷹・田無の塗装専門店
+              吉祥寺・三鷹・田無の
             </p>
             <div
               className="relative z-[1] mt-[calc(4cqw/375*100)] h-px w-full bg-[var(--color-hero-accent)]"
@@ -217,7 +211,7 @@ export default function Hero() {
         {/* #1 屋根アイコン ← sjnkbs ピンクノートPC。right:-36px / top:350px / w:102px */}
         <motion.div
           variants={sweepInDeco}
-          className="absolute z-[2] -right-[calc(12cqw/375*100)] top-[calc(388cqw/375*100)] w-[calc(120cqw/375*100)]"
+          className="absolute z-[2] -right-[calc(8cqw/375*100)] top-[calc(380cqw/375*100)] w-[calc(120cqw/375*100)]"
         >
           <img
             src="/img/Roof_Icon.png"
@@ -228,11 +222,22 @@ export default function Hero() {
         </motion.div>
 
         {/* #2 paint-blue ← sjnkbs 書類アイコン。left:-16px / top:491px / w:78px */}
+        <motion.div
+          variants={sweepInDeco}
+          className="absolute z-[2] -left-[calc(4cqw/375*100)] top-[calc(432cqw/375*100)] w-[calc(72cqw/375*100)]"
+        >
+          <img
+            src="/img/paint-blue.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full max-w-none"
+          />
+        </motion.div>
 
         {/* #3 dot-blue ← sjnkbs 赤ドット。left:70px / top:578px / w:16px */}
         <motion.div
           variants={sweepInDeco}
-          className="absolute z-[2] left-[calc(80cqw/375*100)] top-[calc(544cqw/375*100)] w-[calc(16cqw/375*100)]"
+          className="absolute z-[2] left-[calc(76cqw/375*100)] top-[calc(532cqw/375*100)] w-[calc(16cqw/375*100)]"
         >
           <img
             src="/img/dot-blue.svg"
