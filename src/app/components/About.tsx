@@ -1,6 +1,6 @@
 const companyInfo: { label: string; value: string | string[] }[] = [
   { label: '会社名', value: '宮口塗装' },
-  { label: '代表取締役社長', value: '宮口' },
+  { label: '代表', value: '宮口幸大' },
   { label: '創業', value: '創業40年' },
   { label: '所在地', value: '東京都西東京市新町1-10-3' },
   { label: '電話番号', value: '042-462-3496' },
@@ -70,7 +70,7 @@ export default function About() {
           <div className="mx-auto w-full" style={{ maxWidth: 800 }}>
             <table className="w-full" style={{ borderCollapse: 'collapse' }}>
               <tbody>
-                {companyInfo.map((row) => (
+                {companyInfo.filter((row) => row.label !== '資格' /* 資格は宮口さん確認まで非表示（1030） */).map((row) => (
                   <tr key={row.label} style={{ borderBottom: '1px solid var(--color-hairline)' }}>
                     <th
                       className="text-left py-4 pr-8"

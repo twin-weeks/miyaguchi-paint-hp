@@ -45,7 +45,9 @@ export function RecruitEntry() {
           <p className="mb-8 text-center leading-relaxed" style={{ fontSize: 15, color: "var(--color-ink)" }}>
             履歴書は不要です。
             <br />
-            送信後、担当より面接の日程をご連絡します。
+            送信後、担当より
+            <br />
+            面接の日程をご連絡します。
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">

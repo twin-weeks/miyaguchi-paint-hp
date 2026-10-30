@@ -16,6 +16,7 @@ import { useScrolledPast } from "../hooks/useScrolledPast";
    ※ 色・コピーは宮口独自（参考サイトの赤は移植しない）
    ───────────────────────────────────────────────────────── */
 const NAV_LINKS = [
+  { href: "/", label: "トップ" },
   { href: "/#reasons", label: "選ばれる理由" },
   { href: "/#works", label: "施工実績" },
   { href: "/#about", label: "会社概要" },
@@ -30,7 +31,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   /* SPで「最上部はハンバーガーだけ → 6割スクロールで帯＋ロゴ出現」用。
      md+（PC）は常時表示なので各クラスを md: で上書きして影響させない。*/
-  const scrolled = useScrolledPast();
+  // 採用ページは FV が無いので、最初からロゴ帯を出してトップへ戻れるようにする
+  const isRecruit = window.location.pathname.startsWith("/recruit");
+  const scrolled = useScrolledPast() || isRecruit;
 
   return (
     <>
