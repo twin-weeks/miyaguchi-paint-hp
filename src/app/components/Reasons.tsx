@@ -204,7 +204,7 @@ export default function Reasons() {
             h3Line1="地域知り尽くした職人が"
             h3Line2="最適な施工をご提案"
             body="外壁の診断から、夏の室温を下げる遮熱塗装まで。お住まいの悩みは、この地域の気候と環境を知り尽くした熟練の職人が直接お伺いし、的確に解決いたします。"
-            image="/img/reason01.jpg"
+            image="/img/free/ai-reason01_v1.jpg"
             imageAlt="屋根上の職人"
             stats={[
               { label: "累計施工実績", value: "5,000件以上" },
@@ -218,8 +218,8 @@ export default function Reasons() {
             h3Line1="塗装の寿命を決める下地"
             h3Line2="見えない部分を丁寧に"
             body="塗装の寿命を本当に決めるのは、高級な塗料ではなく「下地処理」です。ひび割れの補修やサビ落とし、高圧洗浄など、上に塗れば見えなくなってしまう工程にこそ私たちの真価があります。40年の現場で培われ、職人の身体に染み込んだ妥協のない手順を、一切省略することなく実行します。美しさが10年先も続く理由はここにあります。"
-            image="/img/reason02.jpg"
-            imageAlt="足場・梯子"
+            image="/img/free/ai-reason03_v1.jpg"
+            imageAlt="外壁をハケで丁寧に塗る職人の手元"
           />
 
           <ReasonCard
@@ -228,8 +228,8 @@ export default function Reasons() {
             h3Line1="助成金や保険の手続きも"
             h3Line2="まるごとサポート"
             body="「うちの塗り替え、助成金は使えるかな？」「火災保険の対象になる？」そんな疑問も、まずは私たちにご相談ください。専門知識が必要な書類づくりや、ちょっと面倒な事務手続きも、私たちがしっかり代行・サポートいたします。手間をかけずに、賢くおトクに。大切なお家をメンテナンスできるよう、全力でバックアップします。"
-            image="/img/reason03.jpg"
-            imageAlt="外壁のハケで塗装中"
+            image="/img/free/reason03-office.jpg"
+            imageAlt="書類を整理する事務スタッフ"
           />
         </div>
 

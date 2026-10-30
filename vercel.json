@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/recruit", "destination": "/index.html" }]
+}

@@ -23,7 +23,7 @@ export default function FixedFooterCta() {
     >
       {/* 電話（オレンジ） */}
       <a
-        href="tel:08052224440"
+        href="tel:0424623496"
         className="flex flex-1 items-center justify-center gap-2 rounded-lg px-2 py-2.5 text-white border-b-4 transition-all duration-150 active:translate-y-0.5 active:border-b-2"
         style={{
           backgroundColor: "var(--color-cta-orange)",

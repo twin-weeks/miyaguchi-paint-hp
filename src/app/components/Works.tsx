@@ -1,19 +1,19 @@
 const worksData = [
   {
-    image: '/img/Works01.jpg',
-    alt: '施工実績1 - 屋根塗装',
+    image: '/img/free/works01.jpg',
+    alt: '屋根塗装のイメージ',
   },
   {
-    image: '/img/Works02.jpeg',
-    alt: '施工実績2 - 外壁塗装',
+    image: '/img/free/works02.jpg',
+    alt: '外壁塗装のイメージ',
   },
   {
-    image: '/img/Works03.webp',
-    alt: '施工実績3 - 屋根板金',
+    image: '/img/free/works03.jpg',
+    alt: '屋根板金のイメージ',
   },
   {
-    image: '/img/Works04.jpeg',
-    alt: '施工実績4 - 防水工事',
+    image: '/img/free/works04.jpg',
+    alt: '防水工事のイメージ',
   },
 ];
 

@@ -16,10 +16,11 @@ import { useScrolledPast } from "../hooks/useScrolledPast";
    ※ 色・コピーは宮口独自（参考サイトの赤は移植しない）
    ───────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { href: "#reasons", label: "選ばれる理由" },
-  { href: "#works", label: "施工実績" },
-  { href: "#about", label: "会社概要" },
-  { href: "#contact", label: "お問い合わせ" },
+  { href: "/#reasons", label: "選ばれる理由" },
+  { href: "/#works", label: "施工実績" },
+  { href: "/#about", label: "会社概要" },
+  { href: "/recruit", label: "採用情報" },
+  { href: "/#contact", label: "お問い合わせ" },
 ];
 
 /* 3本線のシルバーグラデ（Figma: 線形グラデーション #F3F3F3 → #B1B1B1）*/
@@ -52,7 +53,7 @@ export default function Header() {
         >
           {/* ロゴ：屋根アイコン + 「宮口塗装」(グレーグラデ文字) + サブタイトル */}
           <a
-            href="#"
+            href="/"
             onClick={() => setOpen(false)}
             className={`flex flex-col items-center transition-opacity duration-300 md:pointer-events-auto md:items-start md:opacity-100 ${
               scrolled ? "opacity-100" : "pointer-events-none opacity-0"

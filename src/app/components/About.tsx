@@ -2,7 +2,8 @@ const companyInfo: { label: string; value: string | string[] }[] = [
   { label: '会社名', value: '宮口塗装' },
   { label: '代表取締役社長', value: '宮口' },
   { label: '創業', value: '2006年8月' },
-  { label: '所在地', value: '〒吉祥寺' },
+  { label: '所在地', value: '東京都西東京市新町1-10-3' },
+  { label: '電話番号', value: '042-462-3496' },
   { label: '営業時間', value: '8:00 〜 17:00' },
   {
     label: '資格',
@@ -123,7 +124,7 @@ export default function About() {
                   対応可能エリア
                 </p>
                 <p style={{ fontSize: 'clamp(14px, 2.4cqw, 16px)', fontWeight: 400, color: 'var(--color-ink)' }}>
-                  東京都内および近郊エリア
+                  東京23区および近郊エリア
                 </p>
               </div>
               <p style={{ fontSize: 'clamp(13px, 2.4cqw, 15px)', fontWeight: 400, color: 'var(--color-ink-muted)', lineHeight: 1.6 }}>

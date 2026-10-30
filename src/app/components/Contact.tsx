@@ -185,7 +185,7 @@ export default function Contact() {
             color: "var(--color-ink-muted)",
           }}
         >
-          © 2024 宮口塗装. All Rights Reserved.
+          © 2026 宮口塗装. All Rights Reserved.
         </p>
       </div>
     </footer>

@@ -16,8 +16,8 @@ import { useEffect, useState } from "react";
    ───────────────────────────────────────────────────────── */
 
 const SLIDES = [
-  { src: "/img/mv-carousel-01.jpg", alt: "宮口塗装の施工現場の様子" },
-  { src: "/img/mv-carousel-02.jpg", alt: "宮口塗装の職人による塗装作業" },
+  { src: "/img/free/ai-fv-01_v1.jpg", alt: "宮口塗装の施工現場の様子" },
+  { src: "/img/free/ai-fv-02_v1.jpg", alt: "宮口塗装の職人による塗装作業" },
 ];
 
 /* ── 傾き（傾き再調査 §7 ライブ実測で確定）──
