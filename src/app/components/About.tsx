@@ -1,7 +1,7 @@
 const companyInfo: { label: string; value: string | string[] }[] = [
   { label: '会社名', value: '宮口塗装' },
   { label: '代表取締役社長', value: '宮口' },
-  { label: '創業', value: '2006年8月' },
+  { label: '創業', value: '創業40年' },
   { label: '所在地', value: '東京都西東京市新町1-10-3' },
   { label: '電話番号', value: '042-462-3496' },
   { label: '営業時間', value: '8:00 〜 17:00' },
